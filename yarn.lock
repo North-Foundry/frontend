@@ -9,7 +9,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@north-foundry/frontend@workspace:."
   dependencies:
-    turbo: "npm:latest"
+    turbo: "npm:2.11.10"
   languageName: unknown
   linkType: soft
 
@@ -55,7 +55,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo@npm:latest":
+"turbo@npm:2.11.10":
   version: 2.11.10
   resolution: "turbo@npm:2.11.10"
   dependencies:
