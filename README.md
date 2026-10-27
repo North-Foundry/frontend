@@ -13,7 +13,7 @@ Monorepo Turborepo per il frontend di North Foundry.
 
 ## Requisiti
 
-- Node.js >= 22
+- Node.js 24 LTS or newer
 - Yarn Berry 4 (`corepack enable`; la versione è fissata nel campo `packageManager`)
 
 ## Comandi
