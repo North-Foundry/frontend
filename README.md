@@ -1,35 +1,41 @@
 # @north-foundry/frontend
 
-Monorepo Turborepo per il frontend di North Foundry.
+Turborepo monorepo for the North Foundry frontend.
 
-## Struttura
+## Structure
 
 ```
 .
-├── apps/        # applicazioni eseguibili
-├── packages/    # librerie e configurazioni condivise
-└── turbo.json   # pipeline dei task
+├── apps/        # runnable applications
+├── packages/    # shared libraries and configuration
+└── turbo.json   # task pipeline
 ```
 
-## Requisiti
+## Requirements
 
 - Node.js 24 LTS or newer
-- Yarn Berry 4 (`corepack enable`; la versione è fissata nel campo `packageManager`)
+- Yarn Berry 4 (`corepack enable`; the version is pinned in the `packageManager` field)
 
-## Comandi
+## Commands
 
 ```bash
-yarn install     # installa tutte le dipendenze del workspace
-yarn dev         # avvia i task dev in tutte le app
-yarn build       # build di app e package, rispettando le dipendenze
-yarn lint        # lint di tutti i workspace
-yarn check-types # type check di tutti i workspace
-yarn test        # test di tutti i workspace
+yarn install     # install every dependency in the workspace
+yarn dev         # start the dev task in every app
+yarn build       # build apps and packages in dependency order
+yarn lint        # lint every workspace
+yarn check-types # type check every workspace
+yarn test        # test every workspace
 ```
 
-I comandi di root delegano a Turborepo, che esegue lo script omonimo solo nei workspace che lo definiscono.
+Root commands delegate to Turborepo, which runs the matching script only in workspaces that define it.
 
-## Aggiungere un workspace
+## Adding a workspace
 
-Creare una cartella in `apps/` o `packages/` con il proprio `package.json` e aggiungere gli script che servono
-(`build`, `dev`, `lint`, `test`, `check-types`). Turborepo li rileva automaticamente.
+Create a folder in `apps/` or `packages/` with its own `package.json` and add the scripts it needs
+(`build`, `dev`, `lint`, `test`, `check-types`). Turborepo picks it up automatically.
+
+## Repository conventions
+
+Agent-facing rules live in `AGENTS.md` and under `.agents/docs/`. Commit messages follow
+Conventional Commits and are validated by `.githooks/commit-msg`; enable the hook once per clone with
+`git config core.hooksPath .githooks`.
