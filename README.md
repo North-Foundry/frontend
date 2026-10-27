@@ -36,6 +36,8 @@ Create a folder in `apps/` or `packages/` with its own `package.json` and add th
 
 ## Repository conventions
 
+`packages/ui` holds the shared UI (`@north-foundry/ui`).
+
 Agent-facing rules live in `AGENTS.md` and under `.agents/docs/`. Commit messages follow
 Conventional Commits and are validated by `.githooks/commit-msg`; enable the hook once per clone with
 `git config core.hooksPath .githooks`.
