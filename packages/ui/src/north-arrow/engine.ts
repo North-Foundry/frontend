@@ -2,7 +2,7 @@
 // shaded per frame by an effect, and ordered-dithered onto a handful of tones whose darkest step
 // is transparent, so the mark falls away into the page exactly like a plate does.
 
-import { bayerMatrix } from './vendor/dither';
+import { bayerMatrix } from '../lib/dither';
 import { hexToRgb, northFoundryPalette } from './vendor/palette';
 
 export type Ground = 'dark' | 'light';

@@ -1,4 +1,6 @@
-/** A single-channel image with values in [0, 1], row-major. */
+/**
+ * A single-channel image with values in [0, 1], row-major.
+ */
 export interface LuminanceImage {
   width: number;
   height: number;
@@ -6,15 +8,23 @@ export interface LuminanceImage {
 }
 
 export interface ToneOptions {
-  /** Luminance mapped to 0; everything darker becomes transparent. */
+  /**
+   * Luminance mapped to 0; everything darker becomes transparent.
+   */
   black?: number;
-  /** Luminance mapped to 1. */
+  /**
+   * Luminance mapped to 1.
+   */
   white?: number;
-  /** Exponent applied after levels; above 1 darkens the mid-tones. */
+  /**
+   * Exponent applied after levels; above 1 darkens the mid-tones.
+   */
   gamma?: number;
 }
 
-/** Levels and gamma, applied before dithering to place the image's tones on the palette. */
+/**
+ * Levels and gamma, applied before dithering to place the image's tones on the palette.
+ */
 export function tone(image: LuminanceImage, options: ToneOptions = {}): LuminanceImage {
   const { black = 0, white = 1, gamma = 1 } = options;
   const span = Math.max(1e-6, white - black);
@@ -26,7 +36,9 @@ export function tone(image: LuminanceImage, options: ToneOptions = {}): Luminanc
   return { width: image.width, height: image.height, data };
 }
 
-/** Recursively built Bayer matrix of size 2^order, normalised to thresholds in (0, 1). */
+/**
+ * Recursively built Bayer matrix of size 2^order, normalised to thresholds in (0, 1).
+ */
 export function bayerMatrix(order: number): Float32Array {
   let size = 1;
   let matrix = [0];
@@ -55,7 +67,9 @@ export function bayerMatrix(order: number): Float32Array {
  * as print and stays stable when an image is re-rendered.
  */
 export function orderedDither(image: LuminanceImage, levels: number, order = 3): Uint8Array {
-  if (levels < 2) throw new Error('Dithering needs at least two levels');
+  if (levels < 2) {
+    throw new Error('Dithering needs at least two levels');
+  }
   const matrix = bayerMatrix(order);
   const size = 2 ** order;
   const out = new Uint8Array(image.width * image.height);
