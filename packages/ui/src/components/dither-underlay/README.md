@@ -28,7 +28,7 @@ never captures input, and is hidden from assistive technology. It does not affec
 | Prop | Default | Purpose |
 | --- | --- | --- |
 | `position` | `bottom-right` | Four corners, plus `bottom`, `right`, `top`, and `left` for a complete edge |
-| `animation` | `none` | `none`, `drift`, `breathe`, `expand`, `contract`, `ripple`, `wave`, `fire`, `fire-down`, `evaporate`, `rays`, `interference`, `vortex`, `soliton`, `moire`, `phyllotaxis`, or `branching` |
+| `animation` | `none` | `none`, `drift`, `breathe`, `expand`, `contract`, `ripple`, `wave`, `fire`, `fire-down`, `evaporate`, `rays`, `snowing`, `fireworks`, `interference`, `vortex`, `soliton`, `moire`, `phyllotaxis`, or `branching` |
 | `size` | `900` | Corner texture width in CSS pixels; height follows the original 900:560 ratio |
 | `depth` | `200` | Full-edge texture depth in CSS pixels; its length automatically follows the host |
 | `waveShape` | `sine` | `sine`, `triangle`, `sawtooth`, or `square` when animation is `wave` |
@@ -65,6 +65,16 @@ by the north arrow's rising grains. These effects reuse the shared seeded noise 
 `rays` emits short, seeded dithered beams that move away from the selected edge; corner
 placements fan beams out from the corner. It uses the existing `duration`, `intensity`,
 `pixelSize`, and `depth` controls, with no additional props. A loop has three staggered bursts.
+`snowing` sends flakes away from the selected edge, where they sway gently while retaining a
+seeded dithered shape fixed in each flake's local coordinates. Each entire flake fades continuously
+in opacity during travel; its shape is never re-thresholded on the screen grid. Corner placements
+follow the existing corner projection. It is primarily intended for the top edge, as shown in the
+Storybook Snowing example.
+`fireworks` emits staggered circular explosions through the existing field renderer on a
+fixed screen Bayer dither grid. Random origins stay inside separate zones, with the burst radius
+limited by the available spacing. Soft cores and expanding fronts fade by decreasing dither density.
+The loop repeats seamlessly and uses the existing position, intensity, duration, and pixel size
+controls without adding props.
 `interference` overlays moving wave fields into crossing bands; `vortex` sweeps the pattern in
 curved, rotating ribbons; and `soliton` sends isolated pulses through the field. `moire` drifts
 offset repeating patterns to create interference fringes. `phyllotaxis` arranges motion in
@@ -149,10 +159,10 @@ its own decorative host, hides it from assistive technology and disables pointer
 
 `DitherUnderlay` describes a texture that can occupy a corner or a complete side. Use
 `position` for all eight anchors. The old `DitherCorner` component, `DitherCornerProps`,
-`DitherCornerPosition`, `DitherCornerAnimation` and `@north-foundry/ui/dither-corner` subpath
-remain aliases. The old `corner` prop is accepted by both component names; `position` wins
+`DitherCornerPosition` and `DitherCornerAnimation` remain aliases. Import the component from
+`@north-foundry/ui/dither-underlay`. The old `corner` prop is accepted by both component names; `position` wins
 when both are supplied. Existing `.nf-dither-corner` selectors still match the underlay host.
 
-`DitherOverlay`, its types, `mountDitherOverlay`, `DITHER_OVERLAY_DEFAULTS` and the
-`@north-foundry/ui/dither-overlay` subpath remain compatibility aliases as well. Existing
+`DitherOverlay`, its types, `mountDitherOverlay` and `DITHER_OVERLAY_DEFAULTS`
+remain compatibility aliases as well. Existing
 `.nf-dither-overlay` selectors continue to match; prefer `.nf-dither-underlay` in new code.

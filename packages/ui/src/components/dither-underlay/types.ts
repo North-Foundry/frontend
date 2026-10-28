@@ -1,7 +1,7 @@
 export type DitherEdge = 'top' | 'right' | 'bottom' | 'left';
 export type DitherUnderlayPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | DitherEdge;
 export type DitherUnderlayAnimation = 'none' | 'drift' | 'breathe' | 'expand' | 'contract' | 'ripple'
-  | 'wave' | 'fire' | 'fire-down' | 'evaporate' | 'rays'
+  | 'wave' | 'fire' | 'fire-down' | 'evaporate' | 'rays' | 'snowing' | 'fireworks'
   | 'interference' | 'vortex' | 'soliton' | 'moire' | 'phyllotaxis' | 'branching';
 export type DitherWaveShape = 'sine' | 'triangle' | 'sawtooth' | 'square';
 

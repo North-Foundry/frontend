@@ -17,14 +17,6 @@
       "types": "./src/components/dither-underlay/index.ts",
       "default": "./src/components/dither-underlay/index.ts"
     },
-    "./dither-overlay": {
-      "types": "./src/components/dither-underlay/index.ts",
-      "default": "./src/components/dither-underlay/index.ts"
-    },
-    "./dither-corner": {
-      "types": "./src/components/dither-underlay/index.ts",
-      "default": "./src/components/dither-underlay/index.ts"
-    },
     "./package.json": "./package.json"
   },
   "scripts": {

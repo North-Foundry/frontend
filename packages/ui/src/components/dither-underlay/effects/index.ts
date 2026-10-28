@@ -11,6 +11,8 @@ import { fire } from './fire';
 import { fireDown } from './fire-down';
 import { evaporate } from './evaporate';
 import { rays } from './rays';
+import { snowing } from './snowing';
+import { fireworks } from './fireworks';
 import { interference } from './interference';
 import { vortex } from './vortex';
 import { soliton } from './soliton';
@@ -33,6 +35,8 @@ export const effects = {
   'fire-down': fireDown,
   evaporate,
   rays,
+  snowing,
+  fireworks,
   interference,
   vortex,
   soliton,
