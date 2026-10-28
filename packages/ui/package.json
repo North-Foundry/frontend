@@ -10,8 +10,8 @@
       "default": "./src/index.ts"
     },
     "./north-arrow": {
-      "types": "./src/north-arrow/index.ts",
-      "default": "./src/north-arrow/index.ts"
+      "types": "./src/components/north-arrow/index.ts",
+      "default": "./src/components/north-arrow/index.ts"
     },
     "./package.json": "./package.json"
   },

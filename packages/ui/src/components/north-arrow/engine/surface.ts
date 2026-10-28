@@ -1,4 +1,4 @@
-import { bayerMatrix } from '../../lib/dither';
+import { bayerMatrix } from '../../../lib/dither';
 import { hexToRgb, northFoundryPalette } from '../vendor/palette';
 
 import type { Ground, Layer } from './types';

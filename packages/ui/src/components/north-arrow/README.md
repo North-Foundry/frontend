@@ -8,7 +8,7 @@ The mark, the engine that draws it, and where to change what.
 - `effects/` — the motion, split by effect. `index.ts` preserves the `./effects` entry point;
   `ascent.ts` is the one used here.
 - `engine/` — grid, mask, ordered dither, distance fields. No knowledge of any specific mark.
-- `../lib/dither.ts` — shared dithering utilities used by North Arrow and DitherCorner.
+- `../../lib/dither.ts` — shared dithering utilities used by North Arrow and DitherCorner.
 - `vendor/palette.ts` — a local copy from `@north-foundry/imaging`, kept here so this package
   does not depend on the plate pipeline.
 - `mount.ts` — the public API: options, canvas sizing, lifecycle, `NORTH_ARROW_DEFAULTS`.
@@ -64,7 +64,7 @@ bundlers drop.
 The modules in `engine/`, `glyphs/` and `effects/` keep the implementation from
 `website/apps/website/src/lab/logo/`. Sync changes module by module; do not copy the upstream
 `engine.ts`, `glyphs.ts` or `effects.ts` wholesale. The imports in `engine/surface.ts` use
-`../../lib/dither` and `../vendor/palette` instead of `@north-foundry/imaging`. The shared
+`../../../lib/dither` and `../vendor/palette` instead of `@north-foundry/imaging`. The shared
 `src/lib/dither.ts` and local `vendor/palette.ts` likewise keep their upstream implementation.
 
 All source comments use multiline blocks, even for a single sentence:
