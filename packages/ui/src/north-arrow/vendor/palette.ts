@@ -4,7 +4,9 @@
  */
 export interface PlatePalette {
   name: string;
-  /** Opaque colours, darkest first, as `#rrggbb`. Index 0 of the output is transparency. */
+  /**
+   * Opaque colours, darkest first, as `#rrggbb`. Index 0 of the output is transparency.
+   */
   tones: readonly string[];
 }
 
@@ -19,7 +21,9 @@ export const northFoundryPalette: PlatePalette = {
 
 export function hexToRgb(hex: string): [number, number, number] {
   const match = /^#([0-9a-f]{6})$/i.exec(hex);
-  if (!match?.[1]) throw new Error(`Expected a #rrggbb colour, got "${hex}"`);
+  if (!match?.[1]) {
+    throw new Error(`Expected a #rrggbb colour, got "${hex}"`);
+  }
   const value = Number.parseInt(match[1], 16);
   return [(value >> 16) & 0xff, (value >> 8) & 0xff, value & 0xff];
 }

@@ -1,9 +1,9 @@
 /**
  * Canvas mount for the North Foundry mark.
  *
- * The drawing itself comes from the logo lab (`engine`, `glyphs`, `effects`), copied unchanged from
- * the website. This module only wires that engine to a host canvas, which is what the website's
- * `stage.ts` does, and keeps it in step with a small set of options.
+ * The drawing comes from the logo lab (`engine`, `glyphs`, and the focused modules in `effects/`).
+ * This module wires that engine to a host canvas, like the website's `stage.ts`, and keeps it in
+ * step with a small set of options.
  *
  * @packageDocumentation
  */
@@ -18,7 +18,9 @@ import { northArrow } from './glyphs';
  */
 const PAD = 0.2;
 
-/** Smallest grid the mark is rasterised on; below this the glyph stops reading. */
+/**
+ * Smallest grid the mark is rasterised on; below this the glyph stops reading.
+ */
 const MIN_GRID = 8;
 
 /**
@@ -28,7 +30,9 @@ const MIN_GRID = 8;
  * for the site avatar.
  */
 export interface NorthArrowOptions {
-  /** Side of the square frame, in CSS pixels. Defaults to `96`. */
+  /**
+   * Side of the square frame, in CSS pixels. Defaults to `96`.
+   */
   size?: number;
   /**
    * Size of one dither cell in CSS pixels. Smaller values keep more detail but cost more cells.
@@ -39,7 +43,9 @@ export interface NorthArrowOptions {
    * Palette to dither against. `dark` (the default) is the site ground; `light` is for pale pages.
    */
   ground?: Ground;
-  /** Paints the whole mark in the foundry blue instead of ink and blue. Defaults to `false`. */
+  /**
+   * Paints the whole mark in the foundry blue instead of ink and blue. Defaults to `false`.
+   */
   mono?: boolean;
   /**
    * Lets the grains rise off the tip. Defaults to `false`, which draws the rest frame as a still.
@@ -48,7 +54,9 @@ export interface NorthArrowOptions {
   animated?: boolean;
 }
 
-/** Handle returned by {@link mountNorthArrow}. */
+/**
+ * Handle returned by {@link mountNorthArrow}.
+ */
 export interface NorthArrowHandle {
   /**
    * Merges new options and repaints from scratch.
@@ -56,7 +64,9 @@ export interface NorthArrowHandle {
    * @param options - Options to override; anything omitted keeps its current value.
    */
   update(options?: NorthArrowOptions): void;
-  /** Stops the animation loop and drops the effect. The canvas keeps its last frame. */
+  /**
+   * Stops the animation loop and drops the effect. The canvas keeps its last frame.
+   */
   destroy(): void;
 }
 
@@ -82,7 +92,9 @@ export function gridSide(size: number, cell: number): number {
   return Math.max(MIN_GRID, Math.round(size / Math.max(1, cell)));
 }
 
-/** Fills omitted options, and keys explicitly set to `undefined`, with the defaults. */
+/**
+ * Fills omitted options, and keys explicitly set to `undefined`, with the defaults.
+ */
 function resolveOptions(options: NorthArrowOptions): Required<NorthArrowOptions> {
   return {
     size: options.size ?? NORTH_ARROW_DEFAULTS.size,
@@ -93,7 +105,9 @@ function resolveOptions(options: NorthArrowOptions): Required<NorthArrowOptions>
   };
 }
 
-/** Merges a partial update into resolved options; `undefined` keeps the current value. */
+/**
+ * Merges a partial update into resolved options; `undefined` keeps the current value.
+ */
 function mergeOptions(
   current: Required<NorthArrowOptions>,
   next: NorthArrowOptions,
@@ -132,9 +146,13 @@ export function mountNorthArrow(
   let effect: Effect | null = null;
   let animation = 0;
 
-  /** Cancels a pending animation frame, if any. */
+  /**
+   * Cancels a pending animation frame, if any.
+   */
   const stopAnimation = (): void => {
-    if (animation) cancelAnimationFrame(animation);
+    if (animation) {
+      cancelAnimationFrame(animation);
+    }
     animation = 0;
   };
 
@@ -152,12 +170,16 @@ export function mountNorthArrow(
     canvas.style.display = 'block';
   };
 
-  /** Draws the rest frame, which is a complete, legible mark. */
+  /**
+   * Draws the rest frame, which is a complete, legible mark.
+   */
   const paintStill = (): void => {
     effect?.frame(ascent.rest, 0);
   };
 
-  /** Drives the effect from the wall clock until {@link stopAnimation} runs. */
+  /**
+   * Drives the effect from the wall clock until {@link stopAnimation} runs.
+   */
   const startAnimation = (): void => {
     let previous = performance.now();
     const start = previous;
@@ -169,7 +191,9 @@ export function mountNorthArrow(
     animation = requestAnimationFrame(tick);
   };
 
-  /** Rebuilds the surface, mask and effect for the current options, then paints once. */
+  /**
+   * Rebuilds the surface, mask and effect for the current options, then paints once.
+   */
   const mount = (): void => {
     stopAnimation();
 
@@ -183,7 +207,9 @@ export function mountNorthArrow(
     paintStill();
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (options.animated && !reducedMotion.matches) startAnimation();
+    if (options.animated && !reducedMotion.matches) {
+      startAnimation();
+    }
   };
 
   mount();
