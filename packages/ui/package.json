@@ -13,6 +13,18 @@
       "types": "./src/components/north-arrow/index.ts",
       "default": "./src/components/north-arrow/index.ts"
     },
+    "./dither-underlay": {
+      "types": "./src/components/dither-underlay/index.ts",
+      "default": "./src/components/dither-underlay/index.ts"
+    },
+    "./dither-overlay": {
+      "types": "./src/components/dither-underlay/index.ts",
+      "default": "./src/components/dither-underlay/index.ts"
+    },
+    "./dither-corner": {
+      "types": "./src/components/dither-underlay/index.ts",
+      "default": "./src/components/dither-underlay/index.ts"
+    },
     "./package.json": "./package.json"
   },
   "scripts": {

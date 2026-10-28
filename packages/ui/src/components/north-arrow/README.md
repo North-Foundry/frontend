@@ -8,7 +8,8 @@ The mark, the engine that draws it, and where to change what.
 - `effects/` — the motion, split by effect. `index.ts` preserves the `./effects` entry point;
   `ascent.ts` is the one used here.
 - `engine/` — grid, mask, ordered dither, distance fields. No knowledge of any specific mark.
-- `../../lib/dither.ts` — shared dithering utilities used by North Arrow and DitherCorner.
+- `../../lib/dither.ts` — shared dithering utilities used by North Arrow and DitherUnderlay.
+- `../../lib/math.ts` — shared hash, noise, clamping and interpolation utilities.
 - `vendor/palette.ts` — a local copy from `@north-foundry/imaging`, kept here so this package
   does not depend on the plate pipeline.
 - `mount.ts` — the public API: options, canvas sizing, lifecycle, `NORTH_ARROW_DEFAULTS`.
@@ -21,7 +22,7 @@ Inside `engine/`, the modules separate rendering from numerical calculations:
 - `surface.ts` — the pixel buffer, palette handling and ordered dithering.
 - `rendering.ts` — glyph placement, rasterization and solid drawing.
 - `distance-field.ts` — distances to the nearest glyph edge.
-- `math.ts` — seeded hash, noise, clamping and interpolation.
+- `math.ts` — compatibility re-export of the shared `../../lib/math.ts` module.
 - `index.ts` — the existing `./engine` entry point.
 
 Inside `glyphs/`, related marks and their private helpers stay together:
@@ -63,7 +64,9 @@ bundlers drop.
 
 The modules in `engine/`, `glyphs/` and `effects/` keep the implementation from
 `website/apps/website/src/lab/logo/`. Sync changes module by module; do not copy the upstream
-`engine.ts`, `glyphs.ts` or `effects.ts` wholesale. The imports in `engine/surface.ts` use
+`engine.ts`, `glyphs.ts` or `effects.ts` wholesale. Math lives in `src/lib/math.ts` and is shared
+with DitherUnderlay; `engine/math.ts` remains as a compatibility re-export. The imports in
+`engine/surface.ts` use
 `../../../lib/dither` and `../vendor/palette` instead of `@north-foundry/imaging`. The shared
 `src/lib/dither.ts` and local `vendor/palette.ts` likewise keep their upstream implementation.
 
