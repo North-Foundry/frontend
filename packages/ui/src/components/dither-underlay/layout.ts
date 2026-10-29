@@ -11,6 +11,7 @@ export const DITHER_UNDERLAY_DEFAULTS: Required<DitherUnderlayOptions> = Object.
   waveShape: 'sine',
   waveCount: 3,
   amplitude: 0.22,
+  reactionThickness: 1,
   pixelSize: 1,
   color: '#5b8fd6',
   intensity: 0.9,

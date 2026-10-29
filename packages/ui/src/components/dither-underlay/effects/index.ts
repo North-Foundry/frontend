@@ -19,6 +19,10 @@ import { soliton } from './soliton';
 import { moire } from './moire';
 import { phyllotaxis } from './phyllotaxis';
 import { branching } from './branching';
+import { chladni } from './chladni';
+import { voronoi } from './voronoi';
+import { reactionDiffusion } from './reaction-diffusion';
+import { kuramoto } from './kuramoto';
 
 /**
  * Adding an animation requires its implementation and one entry here.
@@ -43,4 +47,8 @@ export const effects = {
   moire,
   phyllotaxis,
   branching,
+  chladni,
+  voronoi,
+  'reaction-diffusion': reactionDiffusion,
+  kuramoto,
 } satisfies Record<DitherUnderlayAnimation, DitherEffect>;

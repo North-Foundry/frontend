@@ -28,5 +28,7 @@ export function renderDither(
     waveShape: options.waveShape ?? 'sine',
     waveCount: Math.max(0.25, Math.min(16, options.waveCount ?? 3)),
     amplitude: Math.max(0, Math.min(0.45, options.amplitude ?? 0.22)),
+    reactionThickness: Math.max(0, Math.min(1, options.reactionThickness ?? 1)),
+    duration: Math.max(0.5, options.duration ?? 12),
   });
 }

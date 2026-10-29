@@ -75,6 +75,8 @@ export function mountDitherUnderlay(
       waveShape: options.waveShape,
       waveCount: options.waveCount,
       amplitude: options.amplitude,
+      reactionThickness: options.reactionThickness,
+      duration: options.duration,
     });
     context.putImageData(image, 0, 0);
     const color = options.color.replace(/var\((--[\w-]+)\)/g, (_, token: string) =>

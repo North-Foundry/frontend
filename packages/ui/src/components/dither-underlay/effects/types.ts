@@ -12,6 +12,8 @@ export interface EffectContext {
   waveShape: DitherWaveShape;
   waveCount: number;
   amplitude: number;
+  reactionThickness: number;
+  duration: number;
 }
 
 export interface DitherEffect {

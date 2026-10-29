@@ -28,7 +28,7 @@ never captures input, and is hidden from assistive technology. It does not affec
 | Prop | Default | Purpose |
 | --- | --- | --- |
 | `position` | `bottom-right` | Four corners, plus `bottom`, `right`, `top`, and `left` for a complete edge |
-| `animation` | `none` | `none`, `drift`, `breathe`, `expand`, `contract`, `ripple`, `wave`, `fire`, `fire-down`, `evaporate`, `rays`, `snowing`, `fireworks`, `interference`, `vortex`, `soliton`, `moire`, `phyllotaxis`, or `branching` |
+| `animation` | `none` | `none`, `drift`, `breathe`, `expand`, `contract`, `ripple`, `wave`, `fire`, `fire-down`, `evaporate`, `rays`, `snowing`, `fireworks`, `chladni`, `voronoi`, `reaction-diffusion`, `interference`, `vortex`, `soliton`, `moire`, `phyllotaxis`, `branching`, or `kuramoto` |
 | `size` | `900` | Corner texture width in CSS pixels; height follows the original 900:560 ratio |
 | `depth` | `200` | Full-edge texture depth in CSS pixels; its length automatically follows the host |
 | `waveShape` | `sine` | `sine`, `triangle`, `sawtooth`, or `square` when animation is `wave` |
@@ -37,11 +37,12 @@ never captures input, and is hidden from assistive technology. It does not affec
 | `pixelSize` | `1` | Grain size in CSS pixels, clamped to 1–8 |
 | `color` | `#5b8fd6` | Canvas fill colour; simple CSS variables such as `var(--signal)` also work |
 | `intensity` | `0.9` | Ink coverage from 0 (transparent) to 1 |
-| `duration` | `12` | Seconds per loop, minimum 0.5 |
+| `reactionThickness` | `1` | Reaction-diffusion shape thickness from `0` (thin) to `1` (full) |
+| `duration` | `12` | Seconds per loop for looping effects, minimum 0.5; controls speed for reaction-diffusion and Kuramoto |
 | `paused` | `false` | Freeze the current animation frame |
 
 `expand` starts small, grows, and returns; `contract` starts large, shrinks, and returns.
-All animations loop smoothly and preserve the Bayer grid rather than stretching its pixels.
+Looping animations repeat smoothly and preserve the Bayer grid rather than stretching its pixels.
 Size is capped at 2400px; use a smaller size and 2–4px grains for compact panels or galleries.
 Corner layers keep their size on small screens and are cropped by their parent.
 
@@ -75,7 +76,7 @@ fixed screen Bayer dither grid. Random origins stay inside separate zones, with 
 limited by the available spacing. Soft cores and expanding fronts fade by decreasing dither density.
 The loop repeats seamlessly and uses the existing position, intensity, duration, and pixel size
 controls without adding props.
-`interference` overlays moving wave fields into crossing bands; `vortex` sweeps the pattern in
+`reaction-diffusion` evolves a seeded Gray–Scott simulation; it advances per rendered frame, does not loop, and moves faster with a shorter `duration`. `kuramoto` is a stateful, non-looping field of oscillators that gradually synchronize; `duration` controls how quickly they move. `voronoi` draws a dense network of sharp, moving cell boundaries. `chladni` blends two resonance modes into nodal lines. `interference` overlays moving wave fields into crossing bands; `vortex` sweeps the pattern in
 curved, rotating ribbons; and `soliton` sends isolated pulses through the field. `moire` drifts
 offset repeating patterns to create interference fringes. `phyllotaxis` arranges motion in
 spirals inspired by botanical growth, while `branching` divides the flow into branching streams.

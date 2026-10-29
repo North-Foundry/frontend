@@ -11,7 +11,7 @@ import type { DitherUnderlayOptions, DitherUnderlayProps } from './types';
 /**
  * Leave position unset here so the deprecated corner prop can still supply it.
  */
-const props = withDefaults(defineProps<DitherUnderlayProps>(), {
+const props = withDefaults(defineProps<DitherUnderlayProps & { reactionThickness?: number }>(), {
   ...DITHER_UNDERLAY_DEFAULTS,
   position: undefined,
 });
@@ -30,6 +30,7 @@ const options = computed(() => ({
   waveShape: props.waveShape,
   waveCount: props.waveCount,
   amplitude: props.amplitude,
+  reactionThickness: props.reactionThickness,
   pixelSize: props.pixelSize,
   color: props.color,
   intensity: props.intensity,

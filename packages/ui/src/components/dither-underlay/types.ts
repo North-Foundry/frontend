@@ -2,7 +2,7 @@ export type DitherEdge = 'top' | 'right' | 'bottom' | 'left';
 export type DitherUnderlayPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | DitherEdge;
 export type DitherUnderlayAnimation = 'none' | 'drift' | 'breathe' | 'expand' | 'contract' | 'ripple'
   | 'wave' | 'fire' | 'fire-down' | 'evaporate' | 'rays' | 'snowing' | 'fireworks'
-  | 'interference' | 'vortex' | 'soliton' | 'moire' | 'phyllotaxis' | 'branching';
+  | 'chladni' | 'voronoi' | 'reaction-diffusion' | 'kuramoto' | 'interference' | 'vortex' | 'soliton' | 'moire' | 'phyllotaxis' | 'branching';
 export type DitherWaveShape = 'sine' | 'triangle' | 'sawtooth' | 'square';
 
 export interface FieldOptions {
@@ -10,6 +10,8 @@ export interface FieldOptions {
   waveShape?: DitherWaveShape;
   waveCount?: number;
   amplitude?: number;
+  reactionThickness?: number;
+  duration?: number;
 }
 
 export interface DitherUnderlayOptions {
@@ -33,6 +35,10 @@ export interface DitherUnderlayOptions {
    */
   amplitude?: number;
   /**
+   * Relative thickness of reaction-diffusion shapes, from 0 (thin) to 1 (full).
+   */
+  reactionThickness?: number;
+  /**
    * Size of each square grain in CSS pixels.
    */
   pixelSize?: number;
@@ -45,7 +51,7 @@ export interface DitherUnderlayOptions {
    */
   intensity?: number;
   /**
-   * Duration of one complete, seamless loop in seconds.
+   * Duration of one complete loop in seconds, or relative simulation speed for reaction diffusion and Kuramoto.
    */
   duration?: number;
   paused?: boolean;
