@@ -1,0 +1,71 @@
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    background-color: var(--background);
+  }
+
+  body {
+    min-height: 100dvh;
+    background:
+      var(--nf-grain) repeat,
+      var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family-sans);
+    font-size: var(--nf-text-body);
+    line-height: var(--nf-leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: var(--nf-weight-book);
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-family-mono);
+    font-variant-ligatures: none;
+  }
+
+  ::selection {
+    background-color: var(--selection);
+    color: var(--nf-graphite-50);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

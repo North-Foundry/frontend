@@ -1,0 +1,16 @@
+
+@utility gutter-x {
+  padding-inline: var(--nf-gutter);
+}
+
+/*
+ * A small uppercase monospace label: section names, specification keys, plate captions.
+ */
+@utility label {
+  font-family: var(--font-family-mono);
+  font-size: var(--nf-text-micro);
+  line-height: 1.4;
+  letter-spacing: var(--nf-tracking-label);
+  text-transform: uppercase;
+  color: var(--faint-foreground);
+}

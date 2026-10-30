@@ -1,0 +1,14 @@
+/*
+ * North Foundry theme for shadcn-vue.
+ *
+ *   @import 'tailwindcss';
+ *   @import '@north-foundry/ui/styles.css';
+ *
+ * Primitives, semantic tokens and the Tailwind bridge. It has to come after `tailwindcss` so the
+ * theme's utilities are part of the same build.
+ */
+@import '../tokens/primitives.css';
+@import '../themes/north-foundry.css';
+@import './tailwind.css';
+@import './base.css';
+@import './utilities.css';
