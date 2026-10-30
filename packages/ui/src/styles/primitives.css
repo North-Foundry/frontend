@@ -1,0 +1,89 @@
+/*
+ * Primitive tokens.
+ *
+ * Raw, brand-independent values: palettes, type, spacing, borders, radii, shadows, motion and
+ * texture. Components never read these directly; the theme maps them onto semantic tokens.
+ * Every primitive is prefixed with `--nf-` so it cannot collide with application variables.
+ */
+:root {
+  /* Graphite: blue-black neutrals, from the deepest well to the main text colour. */
+  --nf-graphite-950: #0a0d11;
+  --nf-graphite-900: #0e1116;
+  --nf-graphite-850: #141a21;
+  --nf-graphite-800: #1c2530;
+  --nf-graphite-700: #2a3746;
+  --nf-graphite-600: #3a4a5c;
+  --nf-graphite-500: #5c6d80;
+  --nf-graphite-400: #7d8c9c;
+  --nf-graphite-300: #98a6b5;
+  --nf-graphite-200: #bcc6d1;
+  --nf-graphite-100: #d9dee5;
+  --nf-graphite-50: #eef1f5;
+
+  /*
+   * Blue: the only hue. 500 is the accent, 400 the luminous cyan-blue, 300 is reserved for rare
+   * highlights, 800 tints selections. Plates use the same hue family, defined in
+   * @north-foundry/imaging's palette.
+   */
+  --nf-blue-800: #25384c;
+  --nf-blue-500: #6fa8ff;
+  --nf-blue-400: #8cc8ff;
+  --nf-blue-300: #b4dbff;
+
+  /* Pencil: the colour of hand annotations — graphite with a trace of blue. */
+  --nf-pencil: #a7b6c6;
+
+  /* Error states only. */
+  --nf-red-400: #e8877d;
+
+  /* Typography. */
+  --nf-font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --nf-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --nf-font-hand: 'Architects Daughter', 'Segoe Print', 'Bradley Hand', cursive;
+
+  --nf-weight-book: 450;
+  --nf-weight-medium: 520;
+  --nf-weight-semibold: 600;
+
+  /* Fluid scale between 22rem and 80rem viewports. Moderate steps: hierarchy without shouting. */
+  --nf-text-micro: 0.75rem;
+  --nf-text-caption: 0.8125rem;
+  --nf-text-body: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
+  --nf-text-lede: clamp(1.125rem, 1.04rem + 0.38vw, 1.3125rem);
+  --nf-text-title: clamp(1.25rem, 1.13rem + 0.55vw, 1.5625rem);
+  --nf-text-headline: clamp(1.625rem, 1.33rem + 1.3vw, 2.375rem);
+  --nf-text-display: clamp(2.125rem, 1.45rem + 2.95vw, 3.875rem);
+
+  --nf-leading-tight: 1.04;
+  --nf-leading-snug: 1.22;
+  --nf-leading-normal: 1.62;
+
+  --nf-tracking-tight: -0.022em;
+  --nf-tracking-snug: -0.01em;
+  --nf-tracking-label: 0.08em;
+
+  /* Layout. */
+  --nf-measure: 64ch;
+  --nf-gutter: clamp(1.25rem, 0.75rem + 2.4vw, 3rem);
+  --nf-page-max: 88rem;
+  --nf-section-space: clamp(5rem, 3.5rem + 6.5vw, 10rem);
+
+  --nf-border-hairline: 1px;
+
+  --nf-radius-sm: 0.125rem;
+  --nf-radius-md: 0.25rem;
+
+  /* Only floating layers cast shadows; on a dark ground they read as depth, not decoration. */
+  --nf-shadow-float: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 18px 40px -12px rgb(0 0 0 / 0.7);
+
+  --nf-duration-fast: 120ms;
+  --nf-duration-base: 220ms;
+  --nf-duration-slow: 480ms;
+  --nf-ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /*
+   * Paper grain: fractal noise at very low contrast, tiled over the page, so large dark areas
+   * feel printed rather than flat.
+   */
+  --nf-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.85 0 0 0 0 0.9 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}

@@ -1,0 +1,6 @@
+/*
+ * Framework-agnostic token bundle: primitives plus the North Foundry theme, without Tailwind.
+ * Use it from plain CSS, documentation tooling or non-Tailwind applications.
+ */
+@import './primitives.css';
+@import './themes/north-foundry.css';

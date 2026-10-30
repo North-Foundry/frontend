@@ -1,0 +1,77 @@
+/*
+ * North Foundry theme — dark editorial.
+ *
+ * Maps primitives onto the semantic contract every component reads. Names follow shadcn-vue
+ * (`--background`, `--primary`, …) with an editorial extension (`--rule-*`, `--annotation`,
+ * `--code-*`, …). The theme is dark only: the identity is a dark ground with one cool accent, and
+ * a product that needs a light theme defines its own values for the same tokens.
+ */
+:root {
+  color-scheme: dark;
+
+  --background: var(--nf-graphite-900);
+  --foreground: var(--nf-graphite-100);
+
+  --card: var(--nf-graphite-850);
+  --card-foreground: var(--nf-graphite-100);
+
+  --popover: var(--nf-graphite-850);
+  --popover-foreground: var(--nf-graphite-100);
+
+  --primary: var(--nf-blue-500);
+  --primary-foreground: var(--nf-graphite-950);
+  
+  --secondary: var(--nf-graphite-800);
+  --secondary-foreground: var(--nf-graphite-100);
+
+  --muted: var(--nf-graphite-850);
+  --muted-foreground: var(--nf-graphite-300);
+  
+  --accent: var(--nf-graphite-800);
+  --accent-foreground: var(--nf-graphite-50);
+
+  --destructive: var(--nf-red-400);
+  --destructive-foreground: var(--nf-graphite-950);
+
+  --border: var(--nf-graphite-700);
+  --input: var(--nf-graphite-600);
+  --ring: var(--nf-blue-400);
+
+  --radius: var(--nf-radius-md);
+
+  /*
+   * Editorial extension.
+   */
+  --rule: var(--nf-graphite-700);
+  --rule-strong: var(--nf-graphite-500);
+  
+  --faint-foreground: var(--nf-graphite-400);
+  
+  --signal: var(--nf-blue-400);
+  --signal-soft: color-mix(in oklab, var(--nf-blue-500) 14%, transparent);
+  
+  --link: var(--nf-graphite-50);
+  --link-decoration: color-mix(in oklab, var(--nf-blue-500) 70%, transparent);
+  
+  --selection: var(--nf-blue-800);
+  --annotation: var(--nf-pencil);
+  --float-shadow: var(--nf-shadow-float);
+
+  /*
+   * Code: a sunken well, cool syntax colours, no warm hues.
+   */
+  --code-background: var(--nf-graphite-950);
+  --code-foreground: var(--nf-graphite-100);
+  --code-border: var(--nf-graphite-800);
+  --code-comment: var(--nf-graphite-400);
+  --code-keyword: var(--nf-blue-400);
+  --code-string: #9fd3d6;
+  --code-constant: var(--nf-blue-300);
+  --code-function: var(--nf-graphite-50);
+  --code-parameter: var(--nf-graphite-200);
+  --code-punctuation: var(--nf-graphite-300);
+
+  --font-family-sans: var(--nf-font-sans);
+  --font-family-mono: var(--nf-font-mono);
+  --font-family-hand: var(--nf-font-hand);
+}

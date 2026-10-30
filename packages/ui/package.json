@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -17,12 +19,19 @@
       "types": "./src/components/dither-underlay/index.ts",
       "default": "./src/components/dither-underlay/index.ts"
     },
+    "./styles.css": "./src/styles/index.css",
+    "./tokens.css": "./src/styles/tokens.css",
     "./package.json": "./package.json"
   },
   "scripts": {
     "check-types": "vue-tsc --noEmit"
   },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  },
   "peerDependencies": {
+    "tailwindcss": "^4.3.0",
     "vue": "^3.5.0"
   },
   "devDependencies": {

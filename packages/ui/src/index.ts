@@ -13,4 +13,5 @@ export {
   type NorthArrowOptions,
 } from './components/north-arrow/mount';
 export type { Ground } from './components/north-arrow/engine';
+export { cn } from './lib/utils';
 export * from './components/dither-underlay';
