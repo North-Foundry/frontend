@@ -6,7 +6,21 @@
  * application only imports the stylesheet. Requires `@import 'tailwindcss'` earlier in the
  * consuming stylesheet.
  */
-@source '../**/*.vue';
+@source '../**/*.{vue,ts}';
+
+/*
+ * shadcn-vue components style the dark scheme with `dark:`. It follows the theme's schemes rather
+ * than the operating system: dark everywhere outside `.paper`, and inside a `.dark` element nested
+ * in paper. A paper band inside such a nested dark element is the one case it reads as dark.
+ */
+@custom-variant dark {
+  &:not(:where(.paper, .paper *)) {
+    @slot;
+  }
+  &:where(.paper .dark, .paper .dark *) {
+    @slot;
+  }
+}
 
 @theme inline {
   --color-background: var(--background);

@@ -92,8 +92,34 @@ Import the theme after `tailwindcss`: the bridge uses `@theme inline`, which onl
 Tailwind is in the build. Without Tailwind, import `@north-foundry/ui/tokens.css` instead.
 
 `components.json` points the shadcn-vue CLI at `src/styles/index.css`, so
-`npx shadcn-vue@latest add <component>` writes into `src/components/ui` and uses the `cn` helper
-in `src/lib/utils.ts`.
+`npx shadcn-vue@latest add <component>` writes into `src/components/<name>`, next to the
+hand-written components, and uses the `cn` helper in `src/lib/utils.ts`. After adding a
+component:
+
+- replace its `@/` imports with relative paths, because the apps consume this package from source
+  and do not resolve the alias;
+- move the variants the CLI writes into `index.ts` to `<Name>.ts` next to `<Name>.vue`, keep
+  `index.ts` as a barrel and split the class strings into grouped lines (see
+  `.agents/docs/code-style.md`);
+- export it from `src/index.ts`, and add a `./<name>` entry to `exports` in `package.json` so it is
+  also reachable as `@north-foundry/ui/<name>`;
+- check its colours on both schemes, and prefer the theme's `*-foreground` tokens over fixed
+  colours such as `text-white`.
+
+`dark:` classes follow the theme's schemes rather than the operating system: they apply outside
+`.paper`, and inside a `.dark` element nested in paper.
+
+The shadcn-vue `Button` is the first component added this way:
+
+```vue
+<script setup lang="ts">
+import { Button } from '@north-foundry/ui';
+</script>
+
+<template>
+  <Button variant="outline" size="sm">Read more</Button>
+</template>
+```
 
 The dark scheme is the identity: a graphite ground with one cool accent. Add the `paper` class to
 any element to switch it and everything inside it to the light scheme, and `dark` to switch back.

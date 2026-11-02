@@ -14,7 +14,7 @@
     "components": "@/components",
     "composables": "@/composables",
     "lib": "@/lib",
-    "ui": "@/components/ui",
+    "ui": "@/components",
     "utils": "@/lib/utils"
   }
 }

@@ -7,8 +7,9 @@ source of conventions; read applicable documents before editing:
   including code, documentation and project communication, with its stated
   exceptions.
 - `.agents/docs/commits.md` — commit message format and workflow.
-- `.agents/docs/code-style.md` — braces for conditional branches and a brief
-  comment on every function and method.
+- `.agents/docs/code-style.md` — braces for conditional branches, component
+  file layout with barrel-only `index.ts`, grouped multi-line Tailwind class
+  lists, and a brief comment on every function and method.
 - `.agents/docs/design-tokens.md` — the three tiers of CSS tokens, palette
   naming and colour-scheme rules.
 

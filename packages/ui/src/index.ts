@@ -15,3 +15,4 @@ export {
 export type { Ground } from './components/north-arrow/engine';
 export { cn } from './lib/utils';
 export * from './components/dither-underlay';
+export * from './components/button';

@@ -16,6 +16,60 @@ if (!context) {
 }
 ```
 
+## Component files
+
+A component's entry point, `src/components/<name>/index.ts`, is only a
+barrel: it re-exports and declares nothing. Modules inside a component folder, such as an effect
+registry, are not entry points.
+
+The non-template code of a `.vue` file, such as its `cva` variants and their
+types, lives in a `.ts` file with the same name next to it.
+
+```text
+src/components/button/
+  Button.vue   the component
+  Button.ts    buttonVariants and ButtonVariants
+  index.ts     export { default as Button } from './Button.vue';
+               export { type ButtonVariants, buttonVariants } from './Button';
+```
+
+## Class lists
+
+In TypeScript, such as `cva` variants or `cn` arguments, write a list of three
+or more Tailwind classes as a template literal with one class per line. Shorter
+lists stay on one line in single quotes. Vue template `class` attributes are
+not affected.
+
+Group related classes and separate groups with one empty line, with no spaces on
+it. Keep groups in this order and leave out the empty ones:
+
+1. Layout: display, flex and grid, alignment, gap, shrink, whitespace.
+2. Size and spacing: width, height, `size-*`, padding, margin.
+3. Shape and border: radius, border width and colour.
+4. Background.
+5. Text: size, weight, colour, decoration.
+6. Effects: shadow, transition, outline.
+7. States: `hover:`, `focus-visible:`, `disabled:`, `aria-*:`, `has-*:`.
+8. Descendants: arbitrary variants such as `[&_svg]:`.
+9. `dark:` overrides.
+
+```ts
+outline: `
+  border
+
+  bg-background
+
+  shadow-xs
+
+  hover:bg-accent
+  hover:text-accent-foreground
+
+  dark:border-input
+  dark:bg-input/30
+  dark:hover:bg-input/50
+`,
+```
+
 ## Function and method comments
 
 Give every function and method a brief comment directly above it: named
