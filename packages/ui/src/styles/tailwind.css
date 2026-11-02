@@ -11,34 +11,48 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+  
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
   --color-rule: var(--rule);
   --color-rule-strong: var(--rule-strong);
+  
   --color-faint-foreground: var(--faint-foreground);
+  
   --color-signal: var(--signal);
   --color-signal-soft: var(--signal-soft);
+  
   --color-link: var(--link);
   --color-link-decoration: var(--link-decoration);
+  
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
+  
   --color-annotation: var(--annotation);
+  
   --color-code: var(--code-background);
   --color-code-foreground: var(--code-foreground);
   --color-code-border: var(--code-border);
@@ -48,6 +62,7 @@
   --color-tone-ink-3: var(--tone-ink-3);
   --color-tone-ink-4: var(--tone-ink-4);
   --color-tone-ink-5: var(--tone-ink-5);
+  
   --color-tone-signal-1: var(--tone-signal-1);
   --color-tone-signal-2: var(--tone-signal-2);
   --color-tone-signal-3: var(--tone-signal-3);
@@ -60,14 +75,19 @@
 
   --text-micro: var(--nf-text-micro);
   --text-micro--line-height: 1.4;
+  
   --text-caption: var(--nf-text-caption);
   --text-caption--line-height: 1.45;
+  
   --text-lede: var(--nf-text-lede);
   --text-lede--line-height: 1.5;
+  
   --text-title: var(--nf-text-title);
   --text-title--line-height: var(--nf-leading-snug);
+  
   --text-headline: var(--nf-text-headline);
   --text-headline--line-height: 1.12;
+  
   --text-display: var(--nf-text-display);
   --text-display--line-height: var(--nf-leading-tight);
 

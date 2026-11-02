@@ -106,6 +106,7 @@
   --nf-duration-fast: 120ms;
   --nf-duration-base: 220ms;
   --nf-duration-slow: 480ms;
+  
   --nf-ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   /*
