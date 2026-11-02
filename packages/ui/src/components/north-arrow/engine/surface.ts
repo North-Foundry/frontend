@@ -6,22 +6,30 @@ import type { Ground, Layer } from './types';
 export const LEVELS = 5;
 
 /**
- * Reference background colours for the dark and light grounds.
+ * Reference background colours for the dark and light grounds: `--background` in each scheme.
  */
-export const GROUNDS: Record<Ground, string> = { dark: '#0e1116', light: '#eef1f4' };
+export const GROUNDS: Record<Ground, string> = { dark: '#0e1116', light: '#eef1f5' };
 
 /**
- * Dark tones reuse the plate palette (minus its transparent floor). Light tones run the other way,
- * pale to deep, so that "more signal" always means "more contrast against the ground".
+ * The ink and blue ramps, `LEVELS` opaque `#rrggbb` colours each, from nearest the ground to
+ * strongest contrast with it.
  */
-const TONES: Record<Ground, readonly [readonly string[], readonly string[]]> = {
+export type Tones = readonly [ink: readonly string[], blue: readonly string[]];
+
+/**
+ * Built-in tones, used when the theme's `--tone-*` tokens are not available: a mirror of their
+ * values in the North Foundry theme. Dark tones reuse the plate palette (minus its transparent
+ * floor). Light tones run the other way, pale to deep, so that "more signal" always means "more
+ * contrast against the ground".
+ */
+export const TONES: Record<Ground, Tones> = {
   dark: [
-    ['#2a3746', '#4f5f70', '#7d8c9c', '#b4bfcb', '#eef1f5'],
+    ['#2a3746', '#4f5f70', '#7d8c9c', '#bcc6d1', '#eef1f5'],
     northFoundryPalette.tones.slice(1),
   ],
   light: [
-    ['#c3cad3', '#8d99a7', '#4f5f70', '#232c37', '#0e1116'],
-    ['#c9e0fb', '#8cbcf5', '#5b8fd6', '#2f6bc4', '#1b4a92'],
+    ['#bcc6d1', '#8d99a7', '#4f5f70', '#1c2530', '#0e1116'],
+    ['#c9e4ff', '#8cc8ff', '#5b8fd6', '#2f6bc4', '#1b4a92'],
   ],
 };
 
@@ -71,10 +79,11 @@ export class Surface {
   }
 
   /**
-   * `mono` paints the N in blue as well, for the single-colour variant.
+   * `mono` paints the N in blue as well, for the single-colour variant. `tones` replaces the
+   * built-in ramps for `ground`, such as the ones a theme provides.
    */
-  setPalette(ground: Ground, mono: boolean): void {
-    const [ink, blue] = TONES[ground];
+  setPalette(ground: Ground, mono: boolean, tones: Tones = TONES[ground]): void {
+    const [ink, blue] = tones;
     const build = (tones: readonly string[]) =>
       Uint32Array.from([0, ...tones.map((tone) => packColour(tone))]);
     this.colours = [build(mono ? blue : ink), build(blue)];

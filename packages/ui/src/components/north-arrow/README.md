@@ -49,7 +49,7 @@ Inside `effects/`, each effect has its own file. Shared pieces stay grouped by r
 | Change frame size, padding or grain rules | `mount.ts` |
 | Change defaults | `mount.ts` → `NORTH_ARROW_DEFAULTS` |
 | Change props, accessibility or DOM | `NorthArrow.vue` |
-| Change the rendered tones | `engine/surface.ts` (dithered) or `engine/rendering.ts` (solid) |
+| Change the rendered tones | The `--tone-*` tokens in `src/styles/themes/north-foundry.css`; keep the fallback `TONES` in `engine/surface.ts` in step |
 | Change the shared blue palette | `vendor/palette.ts` (shared with the plate pipeline) |
 | Add a story | `apps/storybook/stories/north-arrow.stories.ts` |
 
@@ -83,3 +83,9 @@ Comments may differ from upstream to follow this format and the repository's Eng
 If the mark itself has to change, change it in the website lab first and port the affected shapes,
 effects and helpers into their corresponding files here, so the two do not drift. Wrapper files
 (`mount.ts`, `NorthArrow.vue`, `index.ts`) are maintained here.
+
+At mount, `mount.ts` reads the theme's `--tone-ink-*` and `--tone-signal-*` tokens where the canvas
+sits, so the mark follows any override of those tokens around it. When the surrounding scheme is
+not the requested ground, it reads them through a hidden probe that carries the ground's scheme
+class (`dark` or `paper`). If the tokens are absent, the renderer uses the built-in `TONES` in
+`engine/surface.ts`.

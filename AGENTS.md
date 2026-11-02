@@ -7,6 +7,10 @@ source of conventions; read applicable documents before editing:
   including code, documentation and project communication, with its stated
   exceptions.
 - `.agents/docs/commits.md` — commit message format and workflow.
+- `.agents/docs/code-style.md` — braces for conditional branches and a brief
+  comment on every function and method.
+- `.agents/docs/design-tokens.md` — the three tiers of CSS tokens, palette
+  naming and colour-scheme rules.
 
 When changing `.agents/docs/`, check that this index's paths and descriptions
 match all documents present; index only documents inside `.agents/`. Other

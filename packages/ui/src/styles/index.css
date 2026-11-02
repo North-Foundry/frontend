@@ -7,8 +7,7 @@
  * Primitives, semantic tokens and the Tailwind bridge. It has to come after `tailwindcss` so the
  * theme's utilities are part of the same build.
  */
-@import './primitives.css';
-@import './themes/north-foundry.css';
+@import './tokens.css';
 @import './tailwind.css';
 @import './base.css';
 @import './utilities.css';

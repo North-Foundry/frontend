@@ -1,9 +1,15 @@
 /*
  * Primitive tokens.
  *
- * Raw, brand-independent values: palettes, type, spacing, borders, radii, shadows, motion and
- * texture. Components never read these directly; the theme maps them onto semantic tokens.
- * Every primitive is prefixed with `--nf-` so it cannot collide with application variables.
+ * Raw, scheme-independent values: palettes, type, spacing, borders, radii, shadows, motion and
+ * texture. Components read semantic tokens instead; the theme maps primitives onto them. Every
+ * primitive is prefixed with `--nf-` so it cannot collide with application variables.
+ *
+ * Colours are named `--nf-<family>-<step>`. Within a family a higher step is always darker, from
+ * 50 to 950. Graphite and navy share their lightness at equal steps; the accent families (blue,
+ * cyan, red) run lighter than graphite at the same step, so pick them by contrast, not by number.
+ * A family lists only the steps the system uses. Every colour in the repository is one of these
+ * values: add a step here rather than writing a new hex elsewhere.
  */
 :root {
   /* Graphite: blue-black neutrals, from the deepest well to the main text colour. */
@@ -13,28 +19,45 @@
   --nf-graphite-800: #1c2530;
   --nf-graphite-700: #2a3746;
   --nf-graphite-600: #3a4a5c;
+  --nf-graphite-550: #4f5f70;
   --nf-graphite-500: #5c6d80;
   --nf-graphite-400: #7d8c9c;
+  --nf-graphite-350: #8d99a7;
   --nf-graphite-300: #98a6b5;
   --nf-graphite-200: #bcc6d1;
   --nf-graphite-100: #d9dee5;
   --nf-graphite-50: #eef1f5;
 
   /*
-   * Blue: the only hue. 500 is the accent, 400 the luminous cyan-blue, 300 is reserved for rare
-   * highlights, 800 tints selections. Plates use the same hue family, defined in
-   * @north-foundry/imaging's palette.
+   * Navy: low-chroma blue for tints that sit in the ground, such as selections, plate shadows and
+   * the dim end of the signal ramp.
    */
-  --nf-blue-800: #25384c;
-  --nf-blue-500: #6fa8ff;
-  --nf-blue-400: #8cc8ff;
+  --nf-navy-800: #18222d;
+  --nf-navy-700: #25384c;
+  --nf-navy-500: #3b5d84;
+
+  /*
+   * Blue: the only accent hue. 500 is the accent on dark grounds and 400 the luminous cyan-blue;
+   * 700 and 800 carry the accent on paper, where the lighter steps lack contrast. Plates use the
+   * same hue family, defined in @north-foundry/imaging's palette.
+   */
+  --nf-blue-200: #c9e4ff;
   --nf-blue-300: #b4dbff;
+  --nf-blue-400: #8cc8ff;
+  --nf-blue-500: #6fa8ff;
+  --nf-blue-600: #5b8fd6;
+  --nf-blue-700: #2f6bc4;
+  --nf-blue-800: #1b4a92;
+
+  /* Cyan: syntax highlighting only, for strings. */
+  --nf-cyan-300: #9fd3d6;
 
   /* Pencil: the colour of hand annotations — graphite with a trace of blue. */
   --nf-pencil: #a7b6c6;
 
-  /* Error states only. */
+  /* Red: error states only. 400 on dark grounds, 600 on paper. */
   --nf-red-400: #e8877d;
+  --nf-red-600: #a7463e;
 
   /* Typography. */
   --nf-font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
@@ -73,8 +96,12 @@
   --nf-radius-sm: 0.125rem;
   --nf-radius-md: 0.25rem;
 
-  /* Only floating layers cast shadows; on a dark ground they read as depth, not decoration. */
-  --nf-shadow-float: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 18px 40px -12px rgb(0 0 0 / 0.7);
+  /*
+   * Only floating layers cast shadows. On a dark ground they read as depth, not decoration; on
+   * paper the same lift needs far less black.
+   */
+  --nf-shadow-float-dark: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 18px 40px -12px rgb(0 0 0 / 0.7);
+  --nf-shadow-float-light: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 18px 40px -12px rgb(14 17 22 / 0.18);
 
   --nf-duration-fast: 120ms;
   --nf-duration-base: 220ms;

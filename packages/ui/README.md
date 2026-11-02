@@ -69,10 +69,19 @@ See `src/components/dither-underlay/README.md` for the options and module map.
 
 ## Theme
 
-The North Foundry palette and semantic tokens are copied unchanged from the website's
-`packages/ui`: `src/styles/primitives.css` holds the raw `--nf-*` values,
-`src/styles/themes/north-foundry.css` maps them onto the shadcn-vue contract (`--background`,
-`--primary`, `--border`, ...), and `src/styles/tailwind.css` exposes them as utilities.
+Colour and the other design values are organised in three tiers; the full rules are in
+`.agents/docs/design-tokens.md` at the repository root.
+
+1. **Primitives** — `src/styles/primitives.css`. Raw `--nf-<family>-<step>` values (graphite,
+   navy, blue, cyan, red, pencil), plus type, spacing, radii, shadows and motion.
+2. **Semantic tokens** — `src/styles/themes/north-foundry.css`. The shadcn-vue contract
+   (`--background`, `--primary`, `--border`, ...) with an editorial extension (`--rule`,
+   `--signal`, `--selection`, `--tone-ink-*`, `--tone-signal-*`, ...). The dark scheme on `:root`
+   and `.dark` and the paper scheme on `.paper` define the same set.
+3. **Component tokens** — `--<component>-*`, declared by the component that reads them.
+
+`src/styles/tailwind.css` exposes the semantic tokens as utilities (`bg-background`,
+`text-signal`, `bg-tone-signal-3`, ...).
 
 ```css
 @import 'tailwindcss';
@@ -86,8 +95,9 @@ Tailwind is in the build. Without Tailwind, import `@north-foundry/ui/tokens.css
 `npx shadcn-vue@latest add <component>` writes into `src/components/ui` and uses the `cn` helper
 in `src/lib/utils.ts`.
 
-The theme is dark only, as on the site: `color-scheme: dark` and a single cool accent. The font
-families point at Instrument Sans, IBM Plex Mono and Architects Daughter, but the font files are
+The dark scheme is the identity: a graphite ground with one cool accent. Add the `paper` class to
+any element to switch it and everything inside it to the light scheme, and `dark` to switch back.
+The font families point at Instrument Sans, IBM Plex Mono and Architects Daughter, but the font files are
 not bundled yet, so consumers currently fall back to system fonts.
 
 ## Provenance

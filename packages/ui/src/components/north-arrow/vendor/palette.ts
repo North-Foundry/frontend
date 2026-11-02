@@ -12,7 +12,7 @@ export interface PlatePalette {
 
 /**
  * North Foundry's cool palette: graphite blue rising to the luminous accent. Keep it in step with
- * the `--nf-blue-*` and `--nf-graphite-*` primitives in `@north-foundry/ui`.
+ * the `--nf-navy-*` and `--nf-blue-*` primitives in `@north-foundry/ui`.
  */
 export const northFoundryPalette: PlatePalette = {
   name: 'north-foundry',

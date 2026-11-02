@@ -5,7 +5,7 @@
  */
 
 export type { Ground, Layer, Glyph, Mask } from './types';
-export { LEVELS, GROUNDS, ditherLevel, Surface } from './surface';
+export { LEVELS, GROUNDS, TONES, ditherLevel, Surface, type Tones } from './surface';
 export { fit, drawSolid, rasterize } from './rendering';
 export { distanceField } from './distance-field';
 export { hash, noise, clamp01, smoothstep } from './math';

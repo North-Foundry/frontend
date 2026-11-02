@@ -50,7 +50,7 @@
 
   ::selection {
     background-color: var(--selection);
-    color: var(--nf-graphite-50);
+    color: var(--selection-foreground);
   }
 
   :focus-visible {

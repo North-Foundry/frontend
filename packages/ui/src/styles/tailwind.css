@@ -36,10 +36,23 @@
   --color-signal-soft: var(--signal-soft);
   --color-link: var(--link);
   --color-link-decoration: var(--link-decoration);
+  --color-selection: var(--selection);
+  --color-selection-foreground: var(--selection-foreground);
   --color-annotation: var(--annotation);
   --color-code: var(--code-background);
   --color-code-foreground: var(--code-foreground);
   --color-code-border: var(--code-border);
+
+  --color-tone-ink-1: var(--tone-ink-1);
+  --color-tone-ink-2: var(--tone-ink-2);
+  --color-tone-ink-3: var(--tone-ink-3);
+  --color-tone-ink-4: var(--tone-ink-4);
+  --color-tone-ink-5: var(--tone-ink-5);
+  --color-tone-signal-1: var(--tone-signal-1);
+  --color-tone-signal-2: var(--tone-signal-2);
+  --color-tone-signal-3: var(--tone-signal-3);
+  --color-tone-signal-4: var(--tone-signal-4);
+  --color-tone-signal-5: var(--tone-signal-5);
 
   --font-sans: var(--font-family-sans);
   --font-mono: var(--font-family-mono);

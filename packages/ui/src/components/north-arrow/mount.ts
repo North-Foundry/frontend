@@ -9,7 +9,7 @@
  */
 
 import { type Effect, ascent } from './effects';
-import { type Ground, Surface, rasterize } from './engine';
+import { type Ground, LEVELS, Surface, type Tones, rasterize } from './engine';
 import { northArrow } from './glyphs';
 
 /**
@@ -22,6 +22,62 @@ const PAD = 0.2;
  * Smallest grid the mark is rasterised on; below this the glyph stops reading.
  */
 const MIN_GRID = 8;
+
+/**
+ * Theme class and `color-scheme` of each ground; see `styles/themes/north-foundry.css`.
+ */
+const SCHEMES: Record<Ground, { className: string; colorScheme: string }> = {
+  dark: { className: 'dark', colorScheme: 'dark' },
+  light: { className: 'paper', colorScheme: 'light' },
+};
+
+/**
+ * Reads the theme's `--tone-ink-*` and `--tone-signal-*` ramps for `ground`, as they resolve where
+ * the canvas sits, so overrides of those tokens around the mark apply. When the surrounding scheme
+ * is not the ground's, a hidden probe carries the ground's scheme class instead, so a light mark
+ * on a dark page still gets the paper tones. Returns `undefined` when any tone is missing or is not
+ * an opaque colour, and the surface then keeps its built-in tones.
+ */
+function readThemeTones(canvas: HTMLCanvasElement, ground: Ground): Tones | undefined {
+  const host = canvas.parentElement;
+  const parser = document.createElement('canvas').getContext('2d');
+  if (!host || !parser) {
+    return undefined;
+  }
+  const scheme = SCHEMES[ground];
+  const probe = document.createElement('span');
+  if (getComputedStyle(host).colorScheme !== scheme.colorScheme) {
+    probe.className = scheme.className;
+  }
+  probe.hidden = true;
+  host.append(probe);
+  const style = getComputedStyle(probe);
+  const ramp = (name: string): string[] | undefined => {
+    const tones: string[] = [];
+    for (let step = 1; step <= LEVELS; step++) {
+      const value = style.getPropertyValue(`--tone-${name}-${step}`).trim();
+      if (!value) {
+        return undefined;
+      }
+      /**
+       * The canvas normalises any CSS colour to `#rrggbb`, or to `rgba(…)` when it is translucent.
+       * An invalid value leaves the transparent sentinel in place, which is rejected below.
+       */
+      parser.fillStyle = 'transparent';
+      parser.fillStyle = value;
+      const tone = String(parser.fillStyle);
+      if (!/^#[0-9a-f]{6}$/i.test(tone)) {
+        return undefined;
+      }
+      tones.push(tone);
+    }
+    return tones;
+  };
+  const ink = ramp('ink');
+  const signal = ramp('signal');
+  probe.remove();
+  return ink && signal ? [ink, signal] : undefined;
+}
 
 /**
  * Options accepted by {@link mountNorthArrow} and by the `NorthArrow` Vue component.
@@ -41,6 +97,8 @@ export interface NorthArrowOptions {
   cell?: number;
   /**
    * Palette to dither against. `dark` (the default) is the site ground; `light` is for pale pages.
+   * The tones come from the theme's `--tone-*` tokens in the matching scheme (`.dark` or `.paper`),
+   * read at mount; without the theme stylesheet the built-in North Foundry tones are used.
    */
   ground?: Ground;
   /**
@@ -201,7 +259,7 @@ export function mountNorthArrow(
     sizeCanvas(grid);
 
     const surface = new Surface(canvas, grid, grid);
-    surface.setPalette(options.ground, options.mono);
+    surface.setPalette(options.ground, options.mono, readThemeTones(canvas, options.ground));
     effect = ascent.create(surface, rasterize(northArrow, grid, grid, Math.round(grid * PAD)));
 
     paintStill();
