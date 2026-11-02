@@ -8,7 +8,7 @@ export const LEVELS = 5;
 /**
  * Reference background colours for the dark and light grounds: `--background` in each scheme.
  */
-export const GROUNDS: Record<Ground, string> = { dark: '#0e1116', light: '#eef1f5' };
+export const GROUNDS: Record<Ground, string> = { dark: '#0a0d11', light: '#eef1f5' };
 
 /**
  * The ink and blue ramps, `LEVELS` opaque `#rrggbb` colours each, from nearest the ground to

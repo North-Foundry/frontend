@@ -17,8 +17,8 @@ export function fit(glyph: Glyph, width: number, height: number, pad: number) {
  * the accent, as on the site.
  */
 const SOLID: Record<Ground, readonly [string, string]> = {
-  dark: ['#d9dee5', '#6fa8ff'],
-  light: ['#0e1116', '#2f6bc4'],
+  dark: ['#eef1f5', '#9fd3ff'],
+  light: ['#0a0d11', '#1d4fa8'],
 };
 
 /**
