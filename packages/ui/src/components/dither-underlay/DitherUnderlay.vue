@@ -35,6 +35,7 @@ const options = computed(() => ({
   color: props.color,
   intensity: props.intensity,
   duration: props.duration,
+  timescale: props.timescale,
   paused: props.paused,
 } satisfies Required<DitherUnderlayOptions>));
 /**

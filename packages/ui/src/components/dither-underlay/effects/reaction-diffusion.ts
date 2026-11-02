@@ -28,7 +28,9 @@ export const reactionDiffusion: DitherEffect = {
       simulations.set(context.image, state);
     }
 
-    const stepsPerFrame = Math.max(1, Math.min(60, Math.round(120 / context.duration)));
+    // Diffusion only runs forwards, so a negative timescale sets the speed alone.
+    const baseSteps = Math.max(1, Math.min(60, Math.round(120 / context.duration)));
+    const stepsPerFrame = Math.min(60, Math.round(baseSteps * Math.abs(context.timescale)));
     for (let i = 0; i < stepsPerFrame; i++) {
       step(state);
     }

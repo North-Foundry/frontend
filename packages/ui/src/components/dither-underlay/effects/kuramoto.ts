@@ -23,7 +23,7 @@ function createOscillators(): Oscillators {
 export const kuramoto: DitherEffect = {
   /** Coupled oscillators gradually synchronize and trace a moving band of grains. */
   render(context) {
-    const { image, duration } = context;
+    const { image, duration, timescale } = context;
     let state = simulations.get(image);
     if (!state) {
       state = createOscillators();
@@ -35,7 +35,7 @@ export const kuramoto: DitherEffect = {
       real += Math.cos(phase) / count;
       imaginary += Math.sin(phase) / count;
     }
-    const dt = tau / (Math.max(2, duration) * 24);
+    const dt = tau / (Math.max(2, duration) * 24) * timescale;
     for (let i = 0; i < count; i++) {
       const phase = phases[i]!;
       phases[i] = phase + dt * (frequencies[i]! + coupling * (imaginary * Math.cos(phase) - real * Math.sin(phase)));

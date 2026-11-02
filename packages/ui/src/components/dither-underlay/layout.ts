@@ -16,6 +16,7 @@ export const DITHER_UNDERLAY_DEFAULTS: Required<DitherUnderlayOptions> = Object.
   color: 'var(--signal, #5b8fd6)',
   intensity: 0.9,
   duration: 12,
+  timescale: 1,
   paused: false,
 });
 

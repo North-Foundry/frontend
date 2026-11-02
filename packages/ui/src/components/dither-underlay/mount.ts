@@ -77,6 +77,7 @@ export function mountDitherUnderlay(
       amplitude: options.amplitude,
       reactionThickness: options.reactionThickness,
       duration: options.duration,
+      timescale: options.timescale,
     });
     context.putImageData(image, 0, 0);
     canvas.style.setProperty('--dither-underlay-color', options.color);
@@ -88,14 +89,15 @@ export function mountDitherUnderlay(
   }
 
   /**
-   * Limits painting to 24 frames per second without advancing while suspended.
+   * Limits painting to 24 frames per second without advancing while suspended. Elapsed time runs
+   * at the timescale, so a negative one plays the loop backwards.
    */
   function tick(now: number): void {
     if (!previous) {
       previous = now;
     }
     if (now - previous >= 1000 / 24) {
-      elapsed += now - previous;
+      elapsed += (now - previous) * Math.max(-10, Math.min(10, options.timescale));
       previous = now;
       paint();
     }
@@ -112,7 +114,7 @@ export function mountDitherUnderlay(
     cancelAnimationFrame(frame);
     previous = 0;
     paint();
-    if (context && visible && !document.hidden && !reducedMotion.matches && !options.paused && options.animation !== 'none') {
+    if (context && visible && !document.hidden && !reducedMotion.matches && !options.paused && options.timescale !== 0 && options.animation !== 'none') {
       frame = requestAnimationFrame(tick);
     }
   }

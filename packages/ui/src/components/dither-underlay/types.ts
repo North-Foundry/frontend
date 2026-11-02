@@ -12,6 +12,7 @@ export interface FieldOptions {
   amplitude?: number;
   reactionThickness?: number;
   duration?: number;
+  timescale?: number;
 }
 
 export interface DitherUnderlayOptions {
@@ -54,6 +55,11 @@ export interface DitherUnderlayOptions {
    * Duration of one complete loop in seconds, or relative simulation speed for reaction diffusion and Kuramoto.
    */
   duration?: number;
+  /**
+   * Playback speed: 1 is normal, 1.5 half again as fast, 0 frozen and negative values run the
+   * loop backwards. Clamped to -10–10. Reaction diffusion cannot run backwards and uses its size.
+   */
+  timescale?: number;
   paused?: boolean;
 }
 

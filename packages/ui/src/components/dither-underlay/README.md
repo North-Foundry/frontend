@@ -10,13 +10,13 @@ import { DitherUnderlay } from '@north-foundry/ui/dither-underlay';
 
 <template>
   <section class="panel">
-    <DitherUnderlay position="top-right" animation="breathe" :size="600" :pixel-size="2" />
+    <DitherUnderlay position="top-right" animation="breathe" :size="600" />
     <div class="content">Your content</div>
   </section>
 </template>
 
 <style scoped>
-.panel { position: relative; border-radius: 4px; background: #0e1116; }
+.panel { position: relative; border-radius: 4px; background: #0a0d11; }
 .content { position: relative; }
 </style>
 ```
@@ -39,6 +39,7 @@ never captures input, and is hidden from assistive technology. It does not affec
 | `intensity` | `0.9` | Ink coverage from 0 (transparent) to 1 |
 | `reactionThickness` | `1` | Reaction-diffusion shape thickness from `0` (thin) to `1` (full) |
 | `duration` | `12` | Seconds per loop for looping effects, minimum 0.5; controls speed for reaction-diffusion and Kuramoto |
+| `timescale` | `1` | Playback speed: `1.5` runs half again as fast, `0` freezes and negative values run backwards; clamped to −10–10. Reaction-diffusion uses only its magnitude |
 | `paused` | `false` | Freeze the current animation frame |
 
 `expand` starts small, grows, and returns; `contract` starts large, shrinks, and returns.
@@ -50,7 +51,7 @@ For a complete edge, use the same component with an edge value:
 
 ```vue
 <DitherUnderlay position="bottom" animation="wave" wave-shape="sawtooth"
-  :depth="180" :pixel-size="2" :wave-count="3" :amplitude="0.3" />
+  :depth="180" :wave-count="3" :amplitude="0.3" />
 ```
 
 Full-edge placements use `depth` instead of `size`. A resize observer matches their length to

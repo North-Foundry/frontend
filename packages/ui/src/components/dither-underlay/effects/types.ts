@@ -14,6 +14,7 @@ export interface EffectContext {
   amplitude: number;
   reactionThickness: number;
   duration: number;
+  timescale: number;
 }
 
 export interface DitherEffect {
