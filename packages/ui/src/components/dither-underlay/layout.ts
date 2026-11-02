@@ -13,7 +13,7 @@ export const DITHER_UNDERLAY_DEFAULTS: Required<DitherUnderlayOptions> = Object.
   amplitude: 0.22,
   reactionThickness: 1,
   pixelSize: 1,
-  color: '#5b8fd6',
+  color: 'var(--signal, #5b8fd6)',
   intensity: 0.9,
   duration: 12,
   paused: false,

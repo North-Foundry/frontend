@@ -79,11 +79,10 @@ export function mountDitherUnderlay(
       duration: options.duration,
     });
     context.putImageData(image, 0, 0);
-    const color = options.color.replace(/var\((--[\w-]+)\)/g, (_, token: string) =>
-      getComputedStyle(canvas).getPropertyValue(token).trim(),
-    );
+    canvas.style.setProperty('--dither-underlay-color', options.color);
+    canvas.style.color = 'var(--dither-underlay-color, #5b8fd6)';
     context.globalCompositeOperation = 'source-in';
-    context.fillStyle = color || DITHER_UNDERLAY_DEFAULTS.color;
+    context.fillStyle = getComputedStyle(canvas).color;
     context.fillRect(0, 0, w, h);
     context.globalCompositeOperation = 'source-over';
   }

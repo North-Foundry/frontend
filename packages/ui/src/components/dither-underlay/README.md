@@ -35,7 +35,7 @@ never captures input, and is hidden from assistive technology. It does not affec
 | `waveCount` | `3` | Wave periods along the edge, clamped to 0.25–16 |
 | `amplitude` | `0.22` | Wave height as a fraction of depth, clamped to 0–0.45 |
 | `pixelSize` | `1` | Grain size in CSS pixels, clamped to 1–8 |
-| `color` | `#5b8fd6` | Canvas fill colour; simple CSS variables such as `var(--signal)` also work |
+| `color` | `var(--signal, #5b8fd6)` | Canvas fill colour; CSS variables resolve against the host, with the fallback used when absent |
 | `intensity` | `0.9` | Ink coverage from 0 (transparent) to 1 |
 | `reactionThickness` | `1` | Reaction-diffusion shape thickness from `0` (thin) to `1` (full) |
 | `duration` | `12` | Seconds per loop for looping effects, minimum 0.5; controls speed for reaction-diffusion and Kuramoto |
