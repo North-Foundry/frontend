@@ -43,6 +43,9 @@ and so on. Its only literal values are the line heights paired with the text sca
 ## Components
 
 - Components read semantic tokens, so they follow the scheme they are placed in.
+- Content teleported out of its band, such as a select list or a dialog, takes the scheme of the
+  element that opened it through `useScheme` in `src/lib/scheme.ts`.
+- Floating layers (lists, popovers, menus) use `shadow-float`, the theme's only shadow for them.
 - Canvas renderers resolve tokens at runtime with `getComputedStyle` and keep a built-in fallback,
   made of primitive values, for use without the stylesheet.
 - Fixed artwork that must look the same on any ground, such as `GradientUnderlay` variants or the

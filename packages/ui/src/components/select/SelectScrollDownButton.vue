@@ -1,0 +1,31 @@
+<script setup lang="ts">
+/**
+ * Scrolls a list that is taller than the screen down while the pointer rests on it.
+ */
+import { ChevronDown } from '@lucide/vue';
+import { reactiveOmit } from '@vueuse/core';
+import type { SelectScrollDownButtonProps } from 'reka-ui';
+import { SelectScrollDownButton, useForwardProps } from 'reka-ui';
+import type { HTMLAttributes } from 'vue';
+
+import { cn } from '../../lib/utils';
+import { selectScrollDownButtonClasses } from './SelectScrollDownButton';
+
+const props = defineProps<SelectScrollDownButtonProps & { class?: HTMLAttributes['class'] }>();
+
+const delegatedProps = reactiveOmit(props, 'class');
+
+const forwardedProps = useForwardProps(delegatedProps);
+</script>
+
+<template>
+  <SelectScrollDownButton
+    data-slot="select-scroll-down-button"
+    v-bind="forwardedProps"
+    :class="cn(selectScrollDownButtonClasses, props.class)"
+  >
+    <slot>
+      <ChevronDown class="size-4" />
+    </slot>
+  </SelectScrollDownButton>
+</template>

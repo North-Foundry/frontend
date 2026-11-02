@@ -104,7 +104,10 @@ component:
 - export it from `src/index.ts`, and add a `./<name>` entry to `exports` in `package.json` so it is
   also reachable as `@north-foundry/ui/<name>`;
 - check its colours on both schemes, and prefer the theme's `*-foreground` tokens over fixed
-  colours such as `text-white`.
+  colours such as `text-white`;
+- if it teleports content to `body`, as `SelectContent` does, wrap that content in an element
+  with `class="contents"` and the scheme class from `useScheme(trigger)`, so it keeps the scheme
+  of the band it was opened from.
 
 `dark:` classes follow the theme's schemes rather than the operating system: they apply outside
 `.paper`, and inside a `.dark` element nested in paper.

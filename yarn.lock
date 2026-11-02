@@ -103,6 +103,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lucide/vue@npm:^1.66.0":
+  version: 1.66.0
+  resolution: "@lucide/vue@npm:1.66.0"
+  peerDependencies:
+    vue: ">=3.0.1"
+  checksum: 10c0/1833f3f2f56384aececa00a30382892ace2a1ce39c68599000dcf8d2fd107f8e28ddbbe7bb6b72056c9b117f9c234655018cd5d9fca2d4318c4614e3e2584f12
+  languageName: node
+  linkType: hard
+
 "@north-foundry/frontend@workspace:.":
   version: 0.0.0-use.local
   resolution: "@north-foundry/frontend@workspace:."
@@ -115,10 +124,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@north-foundry/ui@workspace:packages/ui"
   dependencies:
+    "@lucide/vue": "npm:^1.66.0"
+    "@vueuse/core": "npm:^14.1.0"
     class-variance-authority: "npm:^0.7.1"
     clsx: "npm:^2.1.1"
     reka-ui: "npm:^2.11.0"
     tailwind-merge: "npm:^3.7.0"
+    tw-animate-css: "npm:^1.4.0"
     typescript: "npm:^6.0.3"
     vue: "npm:^3.5.44"
     vue-tsc: "npm:^3.3.13"
@@ -564,6 +576,13 @@ __metadata:
   bin:
     turbo: bin/turbo
   checksum: 10c0/8a6ec1d42251c96749953398739a4d005fd88e882c9f4cf0b9a4367259ba427320088bb67fc6fe3235a1e983ebaab992d35a163b8f1b03d6632101b2da581f15
+  languageName: node
+  linkType: hard
+
+"tw-animate-css@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "tw-animate-css@npm:1.4.0"
+  checksum: 10c0/6cfbc19ccc73883ec80ef1f9147f43e736cb01ee99c8172968b37eb81b720523d30e38b1a96aef92db3c586d864204db5510b51744ddacbbf0ad8e3c7fb56ec7
   languageName: node
   linkType: hard
 

@@ -6,6 +6,10 @@
  * application only imports the stylesheet. Requires `@import 'tailwindcss'` earlier in the
  * consuming stylesheet.
  */
+
+/* Enter and exit animations (`animate-in`, `fade-in-0`, `zoom-in-95`, …) used by shadcn-vue. */
+@import 'tw-animate-css';
+
 @source '../**/*.{vue,ts}';
 
 /*
