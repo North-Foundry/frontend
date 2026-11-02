@@ -41,7 +41,8 @@ const delegatedProps = reactiveOmit(props, 'class');
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits);
 
-const scheme = useScheme(injectSelectRootContext().triggerElement);
+const rootContext = injectSelectRootContext();
+const scheme = useScheme(rootContext.triggerElement, rootContext.open);
 </script>
 
 <template>
