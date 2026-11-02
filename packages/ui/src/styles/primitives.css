@@ -25,8 +25,11 @@
   --nf-graphite-350: #8d99a7;
   --nf-graphite-300: #98a6b5;
   --nf-graphite-200: #bcc6d1;
+  --nf-graphite-150: #ccd3db;
   --nf-graphite-100: #d9dee5;
+  --nf-graphite-75: #e4e8ed;
   --nf-graphite-50: #eef1f5;
+  --nf-graphite-25: #f9fafc;
 
   /*
    * Navy: low-chroma blue for tints that sit in the ground, such as selections, plate shadows and
@@ -57,7 +60,7 @@
 
   /* Red: error states only. 400 on dark grounds, 600 on paper. */
   --nf-red-400: #e8877d;
-  --nf-red-600: #a7463e;
+  --nf-red-600: #ba3533;
 
   /* Typography. */
   --nf-font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
