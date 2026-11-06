@@ -12,8 +12,13 @@ below it.
 | Semantic | `themes/north-foundry.css` | shadcn-vue contract + editorial extension, no prefix | `var(--nf-*)` only |
 | Component | the component's own styles | `--<component>-<role>` | `var()` of a semantic token |
 
-`tailwind.css` bridges semantic tokens to utilities as `--color-<token>`, `--font-*`, `--text-*`
-and so on. Its only literal values are the line heights paired with the text scale.
+`tailwind.css` bridges semantic tokens to utilities as `--color-<token>`, `--text-*` and so on.
+Its only literal values are the line heights paired with the text scale.
+
+Font families are the exception: `utilities.css` declares them as the `sans`, `mono`, `serif` and
+`hand` utilities, and the bridge removes Tailwind's `font-*` family utilities so there is one way
+to set a family. Utilities shared by applications are declared in `packages/ui`, never in an
+application stylesheet.
 
 ## Primitives
 

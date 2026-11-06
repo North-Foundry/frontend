@@ -115,17 +115,17 @@ export const Overview: Story = {
           <p class="label">.{{ scheme }}</p>
 
           <div class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">size</p>
+            <p class="mono text-caption text-muted-foreground">size</p>
             <div class="flex items-end gap-8">
               <div v-for="size in sizes" :key="size" class="flex flex-col items-center gap-2">
                 <Icon :icon="ArrowRight" :size="size" />
-                <p class="font-mono text-caption text-muted-foreground">{{ size }}</p>
+                <p class="mono text-caption text-muted-foreground">{{ size }}</p>
               </div>
             </div>
           </div>
 
           <div class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">colour</p>
+            <p class="mono text-caption text-muted-foreground">colour</p>
             <div class="flex flex-col gap-2">
               <p v-for="colour in colours" :key="colour" :class="colour" class="flex items-center gap-2 text-sm">
                 <Icon :icon="ArrowRight" />
@@ -164,7 +164,7 @@ export const Catalog: Story = {
       <div class="flex flex-col gap-6 p-10">
         <div class="flex flex-wrap items-center gap-4">
           <Input v-model="query" type="search" placeholder="Search icons" class="max-w-80" />
-          <p class="font-mono text-caption text-muted-foreground">
+          <p class="mono text-caption text-muted-foreground">
             {{ matches.length }} / {{ total }}
           </p>
         </div>
@@ -177,7 +177,7 @@ export const Catalog: Story = {
           >
             <Icon :icon="icons[name]" size="lg" />
             <p
-              class="w-full truncate text-center font-mono text-caption text-muted-foreground"
+              class="w-full truncate text-center mono text-caption text-muted-foreground"
               :title="name"
             >
               {{ name }}

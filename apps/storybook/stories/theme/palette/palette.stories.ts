@@ -37,10 +37,10 @@ const meta = {
           style="background: var(--background)"
         >
           <header class="flex items-baseline justify-between gap-6 px-10 pt-8">
-            <p class="font-mono text-micro uppercase tracking-label text-faint-foreground">
+            <p class="mono text-micro uppercase tracking-label text-faint-foreground">
               North Foundry — design system
             </p>
-            <p class="font-mono text-micro uppercase tracking-label text-signal">v0.1</p>
+            <p class="mono text-micro uppercase tracking-label text-signal">v0.1</p>
           </header>
 
           <div class="grid items-center gap-8 px-10 pt-10 pb-10 md:grid-cols-[1.35fr_0.65fr]">
@@ -56,7 +56,7 @@ const meta = {
                 the system shares.
               </p>
               <div
-                class="mt-2 flex items-center gap-3 font-mono text-micro uppercase tracking-label text-faint-foreground"
+                class="mt-2 flex items-center gap-3 mono text-micro uppercase tracking-label text-faint-foreground"
               >
                 <span class="h-px w-8" style="background: var(--signal)"></span>
                 Instrument Sans · IBM Plex Mono
@@ -84,16 +84,16 @@ const meta = {
                   boxShadow: 'inset 0 0 0 1px var(--nf-graphite-700)',
                 }"
               ></span>
-              <span class="font-mono text-micro uppercase tracking-label text-faint-foreground">
+              <span class="mono text-micro uppercase tracking-label text-faint-foreground">
                 {{ swatch.name }}
               </span>
-              <span class="font-mono text-caption text-foreground">{{ swatch.hex }}</span>
+              <span class="mono text-caption text-foreground">{{ swatch.hex }}</span>
             </div>
           </div>
 
           <footer class="flex items-center justify-between border-t border-rule px-10 py-4">
-            <p class="font-mono text-micro text-faint-foreground">shadcn-vue · Tailwind 4</p>
-            <p class="font-mono text-micro text-signal">#9FD3FF</p>
+            <p class="mono text-micro text-faint-foreground">shadcn-vue · Tailwind 4</p>
+            <p class="mono text-micro text-signal">#9FD3FF</p>
           </footer>
         </section>
       </div>

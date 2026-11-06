@@ -1,4 +1,25 @@
 
+/*
+ * Font families: `sans` for the interface, `mono` for code and data, `serif` for editorial display
+ * text, `hand` for annotations. They replace Tailwind's `font-*` family utilities, which the bridge
+ * removes.
+ */
+@utility sans {
+  font-family: var(--font-family-sans);
+}
+
+@utility mono {
+  font-family: var(--font-family-mono);
+}
+
+@utility serif {
+  font-family: var(--font-family-serif);
+}
+
+@utility hand {
+  font-family: var(--font-family-hand);
+}
+
 @utility gutter-x {
   padding-inline: var(--nf-gutter);
 }

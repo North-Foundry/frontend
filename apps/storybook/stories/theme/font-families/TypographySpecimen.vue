@@ -14,7 +14,7 @@
         <p class="type-guide__eyebrow">01 / Interface</p>
         <h2 id="instrument-heading">Instrument Sans</h2>
         <p>The default voice for body text, headings, buttons and interface labels. North Arrow's typographic marks use it too.</p>
-        <code>--font-family-sans · font-sans</code>
+        <code>--font-family-sans · sans</code>
       </div>
       <div class="type-guide__sample type-guide__sample--sans">
         <p class="type-guide__large">Built to be useful.</p>
@@ -27,7 +27,7 @@
         <p class="type-guide__eyebrow">02 / Code &amp; data</p>
         <h2 id="plex-heading">IBM Plex Mono</h2>
         <p>For code, technical details, metadata and compact labels where fixed-width characters help scanning.</p>
-        <code>--font-family-mono · font-mono</code>
+        <code>--font-family-mono · mono</code>
       </div>
       <div class="type-guide__sample type-guide__sample--mono">
         <p class="type-guide__large">const direction = north;</p>
@@ -39,8 +39,8 @@
       <div class="type-guide__details">
         <p class="type-guide__eyebrow">03 / Website display</p>
         <h2 id="newsreader-heading">Newsreader</h2>
-        <p>The website's editorial serif for expressive display text, including italic accents. It is specific to the website rather than a shared UI font token.</p>
-        <code>.serif <span>in the website</span></code>
+        <p>The editorial serif for expressive display text, including italic accents.</p>
+        <code>--font-family-serif · serif</code>
       </div>
       <div class="type-guide__sample type-guide__sample--serif">
         <p class="type-guide__large">A little more <em>character.</em></p>
@@ -53,7 +53,7 @@
         <p class="type-guide__eyebrow">04 / Annotations</p>
         <h2 id="architects-heading">Architects Daughter</h2>
         <p>A handwritten option for occasional annotations and personal notes. The shared token provides fallbacks; applications must load the font to use it.</p>
-        <code>--font-family-hand · font-hand</code>
+        <code>--font-family-hand · hand</code>
       </div>
       <div class="type-guide__sample type-guide__sample--hand">
         <p class="type-guide__large">A note in the margin.</p>
@@ -148,7 +148,7 @@
 
 .type-guide__sample--sans { font-family: var(--font-family-sans); }
 .type-guide__sample--mono { font-family: var(--font-family-mono); }
-.type-guide__sample--serif { font-family: Newsreader, Georgia, serif; }
+.type-guide__sample--serif { font-family: var(--font-family-serif); }
 .type-guide__sample--hand { font-family: var(--font-family-hand); }
 
 .type-guide__large {

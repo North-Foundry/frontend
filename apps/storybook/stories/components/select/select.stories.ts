@@ -162,7 +162,7 @@ export const Overview: Story = {
           <p class="label">.{{ scheme }}</p>
 
           <div class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">sizes</p>
+            <p class="mono text-caption text-muted-foreground">sizes</p>
             <div class="flex flex-wrap items-center gap-3">
               <Select v-for="size in ['default', 'sm']" :key="size" default-value="Cobalt">
                 <SelectTrigger :size="size" class="w-44">
@@ -178,7 +178,7 @@ export const Overview: Story = {
           </div>
 
           <div class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">groups, disabled item</p>
+            <p class="mono text-caption text-muted-foreground">groups, disabled item</p>
             <Select>
               <SelectTrigger class="w-56">
                 <SelectValue placeholder="Choose a finish" />
@@ -201,7 +201,7 @@ export const Overview: Story = {
           </div>
 
           <div class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">long list</p>
+            <p class="mono text-caption text-muted-foreground">long list</p>
             <Select default-value="UTC+1">
               <SelectTrigger class="w-56">
                 <SelectValue />
@@ -213,7 +213,7 @@ export const Overview: Story = {
           </div>
 
           <div class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">invalid, disabled</p>
+            <p class="mono text-caption text-muted-foreground">invalid, disabled</p>
             <div class="flex flex-wrap items-center gap-3">
               <Select>
                 <SelectTrigger aria-invalid="true" class="w-44">

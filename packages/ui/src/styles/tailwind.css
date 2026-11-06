@@ -88,9 +88,14 @@
   --color-tone-signal-4: var(--tone-signal-4);
   --color-tone-signal-5: var(--tone-signal-5);
 
-  --font-sans: var(--font-family-sans);
-  --font-mono: var(--font-family-mono);
-  --font-hand: var(--font-family-hand);
+  /*
+   * Font families are applied with the `sans`, `mono`, `serif` and `hand` utilities, so the
+   * `font-*` family utilities are removed. Font weights survive the reset. Preflight's defaults
+   * still need the families.
+   */
+  --font-*: initial;
+  --default-font-family: var(--font-family-sans);
+  --default-mono-font-family: var(--font-family-mono);
 
   --text-micro: var(--nf-text-micro);
   --text-micro--line-height: 1.4;

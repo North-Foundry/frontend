@@ -55,7 +55,7 @@ const meta = {
         <section class="flex flex-col gap-6">
           <p class="label">Primitives</p>
           <div v-for="family in families" :key="family.name" class="flex flex-col gap-2">
-            <p class="font-mono text-caption text-muted-foreground">--nf-{{ family.name }}-*</p>
+            <p class="mono text-caption text-muted-foreground">--nf-{{ family.name }}-*</p>
             <div class="flex flex-wrap gap-2">
               <div v-for="step in family.steps" :key="step" class="flex w-16 flex-col gap-1">
                 <span
@@ -65,7 +65,7 @@ const meta = {
                     boxShadow: 'inset 0 0 0 1px var(--rule)',
                   }"
                 ></span>
-                <span class="font-mono text-micro text-faint-foreground">{{ step }}</span>
+                <span class="mono text-micro text-faint-foreground">{{ step }}</span>
               </div>
             </div>
           </div>
@@ -83,19 +83,19 @@ const meta = {
               <NorthArrow :size="64" :ground="scheme.ground" />
             </div>
             <div v-for="group in groups" :key="group.name" class="flex flex-col gap-2">
-              <p class="font-mono text-caption text-muted-foreground">{{ group.name }}</p>
+              <p class="mono text-caption text-muted-foreground">{{ group.name }}</p>
               <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 <div v-for="token in group.tokens" :key="token" class="flex items-center gap-2">
                   <span
                     class="size-6 shrink-0 rounded-sm"
                     :style="{ background: 'var(--' + token + ')', boxShadow: 'inset 0 0 0 1px var(--rule)' }"
                   ></span>
-                  <span class="truncate font-mono text-micro text-foreground">--{{ token }}</span>
+                  <span class="truncate mono text-micro text-foreground">--{{ token }}</span>
                 </div>
               </div>
             </div>
             <div v-for="ramp in ['ink', 'signal']" :key="ramp" class="flex flex-col gap-2">
-              <p class="font-mono text-caption text-muted-foreground">--tone-{{ ramp }}-1…5</p>
+              <p class="mono text-caption text-muted-foreground">--tone-{{ ramp }}-1…5</p>
               <div class="grid grid-cols-5 gap-1">
                 <span
                   v-for="level in levels"

@@ -69,6 +69,7 @@
   /* Typography. */
   --nf-font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
   --nf-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --nf-font-serif: Newsreader, 'Iowan Old Style', Georgia, serif;
   --nf-font-hand: 'Architects Daughter', 'Segoe Print', 'Bradley Hand', cursive;
 
   --nf-weight-book: 450;

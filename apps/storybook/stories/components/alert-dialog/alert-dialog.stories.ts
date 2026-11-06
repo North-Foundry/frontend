@@ -96,7 +96,7 @@ const meta = {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-        <p class="font-mono text-caption text-muted-foreground">last choice: {{ choice }}</p>
+        <p class="mono text-caption text-muted-foreground">last choice: {{ choice }}</p>
       </div>
     `,
   }),
@@ -141,7 +141,7 @@ export const Controlled: Story = {
     template: `
       <div class="grid min-h-72 place-items-center content-center gap-4 p-12">
         <Button @click="open = true">Publish plate</Button>
-        <p class="font-mono text-caption text-muted-foreground">open: {{ open }}</p>
+        <p class="mono text-caption text-muted-foreground">open: {{ open }}</p>
         <AlertDialog v-model:open="open">
           <AlertDialogContent>
             <AlertDialogHeader>

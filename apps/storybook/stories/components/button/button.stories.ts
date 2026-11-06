@@ -102,7 +102,7 @@ export const Overview: Story = {
           <p class="label">.{{ scheme }}</p>
 
           <div v-for="variant in variants" :key="variant" class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">{{ variant }}</p>
+            <p class="mono text-caption text-muted-foreground">{{ variant }}</p>
             <div class="flex flex-wrap items-center gap-3">
               <Button v-for="size in textSizes" :key="size" :variant="variant" :size="size">
                 {{ size === 'default' ? 'Button' : size }}
@@ -124,7 +124,7 @@ export const Overview: Story = {
           </div>
 
           <div class="flex flex-col gap-3">
-            <p class="font-mono text-caption text-muted-foreground">as-child</p>
+            <p class="mono text-caption text-muted-foreground">as-child</p>
             <div class="flex flex-wrap items-center gap-3">
               <Button as-child>
                 <a href="#">A link styled as a button</a>
