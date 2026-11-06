@@ -16,6 +16,7 @@ export type { Ground } from './components/north-arrow/engine';
 export { cn } from './lib/utils';
 export { type Scheme, useScheme } from './lib/scheme';
 export * from './components/dither-underlay';
+export * from './components/badge';
 export * from './components/button';
 export * from './components/select';
 export * from './components/input';

@@ -133,6 +133,29 @@ import { Button } from '@north-foundry/ui';
 </template>
 ```
 
+`Badge` supports the shadcn-vue `default`, `secondary`, `destructive` and `outline` variants,
+icons in its default slot, and `as-child` to style a link. Import it from `@north-foundry/ui`
+or `@north-foundry/ui/badge`; both also export `badgeVariants` and `BadgeVariants`.
+
+```vue
+<script setup lang="ts">
+import { Badge } from '@north-foundry/ui/badge';
+</script>
+
+<template>
+  <Badge variant="secondary">In progress</Badge>
+  <Badge variant="outline" as-child>
+    <a href="/projects">Projects</a>
+  </Badge>
+  <Badge class="rounded-full">8</Badge>
+</template>
+```
+
+Badges use `rounded-sm` (2px) to keep compact labels sharper than the `rounded-md` (4px)
+controls. Rounding follows the existing theme tokens; use `class="rounded-none"`,
+`class="rounded-md"` or `class="rounded-full"` for a local override. Prefer pill shapes for
+counters.
+
 The dark scheme is the identity: a graphite ground with one cool accent. Add the `paper` class to
 any element to switch it and everything inside it to the light scheme, and `dark` to switch back.
 The font families point at Instrument Sans, IBM Plex Mono and Architects Daughter, but the font files are
