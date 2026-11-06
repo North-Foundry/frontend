@@ -26,3 +26,4 @@ export * from './components/input';
 export * from './components/textarea';
 export * from './components/label';
 export * from './components/alert-dialog';
+export * from './components/icon';
