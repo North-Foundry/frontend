@@ -23,5 +23,6 @@ export * from './components/radio-group';
 export * from './components/select';
 export * from './components/switch';
 export * from './components/input';
+export * from './components/textarea';
 export * from './components/label';
 export * from './components/alert-dialog';

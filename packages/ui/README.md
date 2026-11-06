@@ -6,6 +6,7 @@ as part of their app, so there is no build step and no duplicated copy of the so
 - [Checkbox](src/components/checkbox/) — Controls for toggling individual options and showing partial selections.
 - [RadioGroup](src/components/radio-group/) — Controls for choosing one option from a visible set.
 - [Switch](src/components/switch/) — Controls for turning settings on or off.
+- [Textarea](src/components/textarea/) — Multiline text entry.
 
 ## North arrow
 
