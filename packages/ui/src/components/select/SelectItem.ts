@@ -22,8 +22,8 @@ export const selectItemClasses = `
 
   focus:bg-accent
   focus:text-accent-foreground
-  data-[disabled]:pointer-events-none
-  data-[disabled]:opacity-50
+  data-disabled:pointer-events-none
+  data-disabled:opacity-50
 
   [&_svg]:pointer-events-none
   [&_svg]:shrink-0

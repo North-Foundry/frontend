@@ -24,7 +24,7 @@ export const selectTriggerClasses = `
   transition-[color,box-shadow]
   outline-none
 
-  data-[placeholder]:text-muted-foreground
+  data-placeholder:text-muted-foreground
   data-[size=default]:h-9
   data-[size=sm]:h-8
   focus-visible:border-ring

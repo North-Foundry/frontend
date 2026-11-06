@@ -8,7 +8,7 @@ export const selectContentClasses = `
   overflow-x-hidden
   overflow-y-auto
 
-  min-w-[8rem]
+  min-w-32
   max-h-(--reka-select-content-available-height)
 
   rounded-md
