@@ -39,6 +39,10 @@
       "types": "./src/components/select/index.ts",
       "default": "./src/components/select/index.ts"
     },
+    "./switch": {
+      "types": "./src/components/switch/index.ts",
+      "default": "./src/components/switch/index.ts"
+    },
     "./input": {
       "types": "./src/components/input/index.ts",
       "default": "./src/components/input/index.ts"
