@@ -24,20 +24,26 @@ import {
 } from './SelectContent';
 import SelectScrollDownButton from './SelectScrollDownButton.vue';
 import SelectScrollUpButton from './SelectScrollUpButton.vue';
+import { DEFAULT_SELECT_SCROLL_SPEED_FACTOR } from './useSelectScroll';
 
 defineOptions({
   inheritAttrs: false,
 });
 
 const props = withDefaults(
-  defineProps<SelectContentProps & { class?: HTMLAttributes['class'] }>(),
+  defineProps<SelectContentProps & {
+    class?: HTMLAttributes['class'];
+    /** Arrow scrolling multiplier: 1 matches Reka's speed; 0 pauses scrolling. */
+    scrollSpeedFactor?: number;
+  }>(),
   {
     position: 'popper',
+    scrollSpeedFactor: DEFAULT_SELECT_SCROLL_SPEED_FACTOR,
   },
 );
 const emits = defineEmits<SelectContentEmits>();
 
-const delegatedProps = reactiveOmit(props, 'class');
+const delegatedProps = reactiveOmit(props, 'class', 'scrollSpeedFactor');
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits);
 
@@ -53,13 +59,14 @@ const scheme = useScheme(rootContext.triggerElement, rootContext.open);
         v-bind="{ ...$attrs, ...forwarded }"
         :class="cn(selectContentClasses, position === 'popper' && selectContentPopperClasses, props.class)"
       >
-        <SelectScrollUpButton />
+        <SelectScrollUpButton :scroll-speed-factor="scrollSpeedFactor" />
         <SelectViewport
+          data-slot="select-viewport"
           :class="cn(selectViewportClasses, position === 'popper' && selectViewportPopperClasses)"
         >
           <slot />
         </SelectViewport>
-        <SelectScrollDownButton />
+        <SelectScrollDownButton :scroll-speed-factor="scrollSpeedFactor" />
       </SelectContent>
     </div>
   </SelectPortal>

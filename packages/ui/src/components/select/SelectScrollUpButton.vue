@@ -10,12 +10,17 @@ import type { HTMLAttributes } from 'vue';
 
 import { cn } from '../../lib/utils';
 import { selectScrollUpButtonClasses } from './SelectScrollUpButton';
+import { useSelectScroll } from './useSelectScroll';
 
-const props = defineProps<SelectScrollUpButtonProps & { class?: HTMLAttributes['class'] }>();
+const props = defineProps<SelectScrollUpButtonProps & {
+  class?: HTMLAttributes['class'];
+  scrollSpeedFactor?: number;
+}>();
 
-const delegatedProps = reactiveOmit(props, 'class');
+const delegatedProps = reactiveOmit(props, 'class', 'scrollSpeedFactor');
 
 const forwardedProps = useForwardProps(delegatedProps);
+const { start, stop } = useSelectScroll(-1, () => props.scrollSpeedFactor);
 </script>
 
 <template>
@@ -23,6 +28,10 @@ const forwardedProps = useForwardProps(delegatedProps);
     data-slot="select-scroll-up-button"
     v-bind="forwardedProps"
     :class="cn(selectScrollUpButtonClasses, props.class)"
+    @pointerdown.capture.stop="start"
+    @pointermove.capture.stop="start"
+    @pointerleave="stop"
+    @pointercancel="stop"
   >
     <slot>
       <ChevronUp class="size-4" />
