@@ -4,8 +4,9 @@
  * Badges use a 2px radius to stay quieter than 4px controls such as buttons.
  */
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { Check } from '@lucide/vue';
 
-import { Badge, type BadgeVariants, Button } from '@north-foundry/ui';
+import { Badge, type BadgeVariants, Button, Icon } from '@north-foundry/ui';
 
 type Variant = NonNullable<BadgeVariants['variant']>;
 
@@ -64,12 +65,12 @@ export const Overview: Story = {
    * Repeats the badge examples in both schemes so they can be compared side by side.
    */
   render: () => ({
-    components: { Badge },
+    components: { Badge, Icon },
     /**
-     * Exposes the variant list and schemes to the template.
+     * Exposes the variant list, the check glyph and schemes to the template.
      */
     setup() {
-      return { variants, schemes: ['dark', 'paper'] };
+      return { variants, Check, schemes: ['dark', 'paper'] };
     },
     template: `
       <div>
@@ -91,9 +92,7 @@ export const Overview: Story = {
               <div class="flex flex-wrap items-center gap-3">
                 <Badge :variant="variant">{{ variant }}</Badge>
                 <Badge :variant="variant">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="m5 12 4 4L19 6" />
-                  </svg>
+                  <Icon :icon="Check" size="xs" />
                   Verified
                 </Badge>
                 <Badge :variant="variant">8</Badge>

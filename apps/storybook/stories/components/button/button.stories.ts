@@ -5,8 +5,9 @@
  * the dark ground and on paper bands.
  */
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { ArrowRight, Plus } from '@lucide/vue';
 
-import { Button, type ButtonVariants } from '@north-foundry/ui';
+import { Button, type ButtonVariants, Icon } from '@north-foundry/ui';
 
 type Variant = NonNullable<ButtonVariants['variant']>;
 type Size = NonNullable<ButtonVariants['size']>;
@@ -21,14 +22,6 @@ interface ButtonStoryArgs {
 const variants: Variant[] = ['default', 'secondary', 'outline', 'ghost', 'destructive', 'link'];
 const textSizes: Size[] = ['sm', 'default', 'lg'];
 const iconSizes: Size[] = ['icon-sm', 'icon', 'icon-lg'];
-
-/**
- * Lucide's `arrow-right` and `plus`, inlined so the stories need no icon package.
- */
-const arrowIcon =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
-const plusIcon =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>';
 
 /**
  * A single button with every prop as a control, on the scheme picked in the Backgrounds toolbar.
@@ -51,12 +44,12 @@ const meta = {
    * Centres the button on the canvas; icon sizes get the plus icon instead of the label.
    */
   render: (args) => ({
-    components: { Button },
+    components: { Button, Icon },
     /**
-     * Exposes the story args and the icon markup to the template.
+     * Exposes the story args and the plus glyph to the template.
      */
     setup() {
-      return { args, plusIcon };
+      return { args, Plus };
     },
     template: `
       <div class="grid min-h-48 place-items-center p-12">
@@ -66,7 +59,7 @@ const meta = {
           :disabled="args.disabled"
           :aria-label="args.size.startsWith('icon') ? args.label : undefined"
         >
-          <span v-if="args.size.startsWith('icon')" class="contents" v-html="plusIcon" />
+          <Icon v-if="args.size.startsWith('icon')" :icon="Plus" />
           <template v-else>{{ args.label }}</template>
         </Button>
       </div>
@@ -91,12 +84,12 @@ export const Overview: Story = {
    * Repeats the same sheet in both schemes, so the two can be compared row by row.
    */
   render: () => ({
-    components: { Button },
+    components: { Button, Icon },
     /**
-     * Exposes the variant and size lists and the icon markup to the template.
+     * Exposes the variant and size lists and the glyphs to the template.
      */
     setup() {
-      return { variants, textSizes, iconSizes, arrowIcon, plusIcon, schemes: ['dark', 'paper'] };
+      return { variants, textSizes, iconSizes, ArrowRight, Plus, schemes: ['dark', 'paper'] };
     },
     template: `
       <div class="grid md:grid-cols-2">
@@ -115,7 +108,7 @@ export const Overview: Story = {
                 {{ size === 'default' ? 'Button' : size }}
               </Button>
               <Button :variant="variant">
-                Continue <span class="contents" v-html="arrowIcon" />
+                Continue <Icon :icon="ArrowRight" />
               </Button>
               <Button
                 v-for="size in iconSizes"
@@ -124,7 +117,7 @@ export const Overview: Story = {
                 :size="size"
                 :aria-label="'Add (' + size + ')'"
               >
-                <span class="contents" v-html="plusIcon" />
+                <Icon :icon="Plus" />
               </Button>
               <Button :variant="variant" disabled>Disabled</Button>
             </div>
