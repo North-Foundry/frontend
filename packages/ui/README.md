@@ -3,6 +3,8 @@
 Shared UI for North Foundry frontends. The package ships TypeScript sources: consumers compile it
 as part of their app, so there is no build step and no duplicated copy of the source.
 
+- [Checkbox](src/components/checkbox/) — Controls for toggling individual options and showing partial selections.
+
 ## North arrow
 
 `NorthArrow` draws the North Foundry mark: the north needle, dithered as a faceted pyramid. It is
