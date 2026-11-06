@@ -22,6 +22,15 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description} />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#0a0d11" />
+    <!--
+      The north arrow, dithered by the same engine as the navbar mark, with no background. The SVG
+      holds the light-ground and dark-ground renders and shows the one for the browser's colour
+      scheme; the ICO for older browsers is the light one. iOS needs an opaque touch icon, so that
+      one sits on the night ground.
+    -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!-- The theme's faces: Newsreader for display, Instrument Sans for text, IBM Plex Mono for code. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
