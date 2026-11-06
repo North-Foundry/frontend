@@ -4,6 +4,7 @@ Shared UI for North Foundry frontends. The package ships TypeScript sources: con
 as part of their app, so there is no build step and no duplicated copy of the source.
 
 - [Checkbox](src/components/checkbox/) — Controls for toggling individual options and showing partial selections.
+- [RadioGroup](src/components/radio-group/) — Controls for choosing one option from a visible set.
 
 ## North arrow
 

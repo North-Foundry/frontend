@@ -19,6 +19,7 @@ export * from './components/dither-underlay';
 export * from './components/badge';
 export * from './components/button';
 export * from './components/checkbox';
+export * from './components/radio-group';
 export * from './components/select';
 export * from './components/input';
 export * from './components/label';
