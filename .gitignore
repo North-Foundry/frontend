@@ -33,6 +33,7 @@ yarn-error.log*
 # tooling and editor
 .DS_Store
 .idea/
+.claude/launch.json
 .vscode/*
 !.vscode/extensions.json
 
