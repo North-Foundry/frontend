@@ -70,6 +70,19 @@ outline: `
 `,
 ```
 
+## Canonical classes
+
+Write every Tailwind class in its canonical form, the one the Tailwind
+`suggestCanonicalClasses` diagnostic proposes. Use an arbitrary value or variant
+only when no scale, theme value or built-in variant produces the same CSS.
+
+- Spacing and sizes use the spacing scale: `max-w-190`, not `max-w-[760px]`;
+  `h-4.5`, not `h-[18px]`.
+- Named theme values replace their raw equivalent: `font-normal`, not
+  `font-[400]`; `rounded-xs`, not `rounded-[2px]`.
+- Built-in variants replace arbitrary ones: `data-disabled:`, not
+  `data-[disabled]:`; `**:`, not `[&_*]:`.
+
 ## Function and method comments
 
 Give every function and method a brief comment directly above it: named
