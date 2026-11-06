@@ -1,0 +1,133 @@
+---
+/*
+ * One privacy policy per app, from the `privacy` collection. The header and the short version
+ * come from the frontmatter; the body is the Markdown, with numbered sections and a list of them
+ * beside it on wide screens. It sits on the night ground, like the rest of the site, and closes
+ * on the Turin skyline.
+ */
+import { getCollection, render } from 'astro:content';
+
+import SiteSkyline from '../../components/SiteSkyline.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+/** Every Markdown file in `src/content/privacy` becomes `/privacy/<file name>/`. */
+export async function getStaticPaths() {
+  const policies = await getCollection('privacy');
+  return policies.map((policy) => ({ params: { slug: policy.id }, props: { policy } }));
+}
+
+const { policy } = Astro.props;
+const { app, platform, title, lede, scope, updated, summary } = policy.data;
+const { Content, headings } = await render(policy);
+const sections = headings.filter((heading) => heading.depth === 2);
+
+const updatedLabel = updated.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<BaseLayout title={`${app} privacy policy`} description={`${lede} The privacy policy of ${app}, by North Foundry.`}>
+  <article aria-labelledby="policy-title">
+    <div class="mx-auto w-full max-w-360 px-5 pt-16 pb-20 md:px-10 md:pt-24 md:pb-28 xl:px-16">
+      <header>
+        <p class="label">Privacy · {app}</p>
+        <h1 id="policy-title" class="serif mt-4 max-w-[16ch] text-display leading-tight font-[480] tracking-[-0.035em]">
+          {title}
+        </h1>
+        <p class="mt-6 max-w-[40ch] text-lede text-muted-foreground">{lede}</p>
+      </header>
+
+      <section aria-labelledby="policy-summary" class="mt-14 md:mt-20">
+        <h2 id="policy-summary" class="label">The short version</h2>
+        <ul class="mt-5 grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-3">
+          {
+            summary.map((statement) => (
+              <li class="border-t border-rule-strong pt-5 text-lede leading-snug">{statement}</li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <div class="mt-16 grid grid-cols-1 gap-x-10 gap-y-10 border-t border-rule pt-12 md:mt-24 md:grid-cols-12">
+        <aside class="md:col-span-3">
+          <div class="md:sticky md:top-24">
+            <dl class="grid grid-cols-2 gap-6 md:grid-cols-1">
+              <div>
+                <dt class="label">Last updated</dt>
+                <dd class="mt-1.5"><time datetime={updated.toISOString().slice(0, 10)}>{updatedLabel}</time></dd>
+              </div>
+              <div>
+                <dt class="label">Applies to</dt>
+                <dd class="mt-1.5">{app} for {platform}</dd>
+              </div>
+            </dl>
+
+            <nav aria-label="Sections of this policy" class="mt-10 hidden md:block">
+              <p class="label">On this page</p>
+              <ol class="mt-3 flex flex-col gap-2">
+                {
+                  sections.map((section, index) => (
+                    <li>
+                      <a
+                        href={`#${section.slug}`}
+                        class="flex gap-3 text-caption text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        <span class="mono text-signal">{String(index + 1).padStart(2, '0')}</span>
+                        {section.text}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ol>
+            </nav>
+          </div>
+        </aside>
+
+        <div class="policy md:col-span-7 md:col-start-5">
+          <p class="text-lede">{scope}</p>
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <SiteSkyline />
+</BaseLayout>
+
+<style>
+  @reference '../../styles/app.css';
+
+  /* The Markdown body: numbered sections in the style of the homepage's principles. */
+  .policy {
+    counter-reset: section;
+  }
+
+  .policy :global(h2) {
+    counter-increment: section;
+    @apply mt-14 border-t border-rule pt-5 text-title font-medium tracking-snug;
+  }
+
+  .policy :global(h2)::before {
+    content: counter(section, decimal-leading-zero);
+    @apply mb-2 block mono text-caption text-signal;
+  }
+
+  .policy :global(p) {
+    @apply mt-4 max-w-measure text-muted-foreground;
+  }
+
+  .policy > p:first-child {
+    @apply mt-0 text-foreground;
+  }
+
+  .policy :global(strong) {
+    @apply font-medium text-foreground;
+  }
+
+  .policy :global(a) {
+    @apply text-link underline decoration-link-decoration underline-offset-4 transition-colors hover:decoration-signal;
+  }
+</style>

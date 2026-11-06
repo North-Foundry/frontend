@@ -1,0 +1,47 @@
+---
+/*
+ * The closing band: the Turin skyline, rendered by scripts/skyline into a dithered plate whose
+ * darkest tone is transparent, so it settles onto the night ground. It is served at its rendered
+ * size, never resampled, because scaling would smear the dither; narrow screens crop it around
+ * the Mole instead of shrinking it.
+ *
+ * Self-contained: removing this file, its include in pages/index.astro, src/assets/skyline and
+ * scripts/skyline takes the skyline out entirely.
+ */
+import turin from '../assets/skyline/turin.png';
+---
+
+<footer class="skyline" aria-label="Turin">
+  <img
+    src={turin.src}
+    width={turin.width}
+    height={turin.height}
+    alt="The Turin skyline: the old town grid, the Mole Antonelliana, the Intesa Sanpaolo tower and the Alps behind"
+    draggable="false"
+    loading="lazy"
+    decoding="async"
+  />
+</footer>
+
+<style>
+  .skyline {
+    overflow: hidden;
+    background: var(--background);
+    padding-top: clamp(24px, 4vw, 48px);
+  }
+
+  /*
+   * Natural size and pixelated. The 360px plate is shown 200px tall: 50px of sky go above, just
+   * clear of the Mole's spire, and 110px of roofs below. Across, the Mole sits at about 62%, so
+   * narrow screens crop around it.
+   */
+  .skyline img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    max-width: none;
+    object-fit: none;
+    object-position: 62% -50px;
+    image-rendering: pixelated;
+  }
+</style>

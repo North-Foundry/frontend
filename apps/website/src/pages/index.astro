@@ -1,0 +1,20 @@
+---
+import SiteHero from '../components/SiteHero.vue';
+import SitePrinciples from '../components/SitePrinciples.astro';
+import SiteProjects from '../components/SiteProjects.astro';
+import SiteSkyline from '../components/SiteSkyline.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home">
+  <SiteHero client:load />
+
+  <!--
+    Bands alternate night and paper; the change of ground replaces the rule between sections.
+    `data-nav-ground` tells the navbar which ground it is passing over.
+  -->
+  <SiteProjects />
+  <SitePrinciples />
+
+  <SiteSkyline />
+</BaseLayout>

@@ -1,0 +1,24 @@
+{
+  "name": "@north-foundry/website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy:staging": "astro build && wrangler deploy"
+  },
+  "dependencies": {
+    "@north-foundry/ui": "workspace:*",
+    "astro": "^7.4.2",
+    "vue": "^3.5.44"
+  },
+  "devDependencies": {
+    "@astrojs/vue": "^7.1.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "wrangler": "4.152.0"
+  }
+}

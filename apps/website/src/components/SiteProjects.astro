@@ -1,0 +1,124 @@
+---
+/*
+ * The Projects band, on paper: one project documented like an entry in a lab book, with its
+ * status, a short summary, a specification and the three capabilities worth knowing first. The
+ * copy lives here, next to the markup, until there are enough projects to move it into content.
+ */
+import { Badge } from '@north-foundry/ui';
+
+const sandpost = {
+  name: 'Sandpost',
+  tagline: 'A self-hosted email catcher for development and staging.',
+  summary:
+    'Sandpost catches the email your applications send before it reaches anyone. Your team reads every message in a shared web inbox or any IMAP client, with nothing to run but one binary.',
+  repository: 'https://github.com/North-Foundry/sandpost',
+  release: {
+    version: '0.2.0-alpha.1',
+    date: '20 October 2026',
+    url: 'https://github.com/North-Foundry/sandpost/releases/tag/v0.2.0-alpha.1',
+  },
+  spec: [
+    { key: 'Status', value: 'Alpha, public prereleases' },
+    { key: 'License', value: 'MIT' },
+    { key: 'Built with', value: 'Rust, SQLite, Tantivy, Vue' },
+    { key: 'Runs on', value: 'macOS, Linux, container image' },
+  ],
+  capabilities: [
+    {
+      title: 'Capture over SMTP',
+      description:
+        'Point any application at port 1025. Each message is stored before the server acknowledges it, and nothing is relayed onward.',
+    },
+    {
+      title: 'Shared by a team',
+      description:
+        'Roles and scopes decide who reads what, so each person sees the mail of the flows they look after.',
+    },
+    {
+      title: 'One process, one database',
+      description:
+        'A single executable with the web interface embedded, SQLite as the only source of truth and an HTTP API for tests.',
+    },
+  ],
+};
+---
+
+<section id="projects" class="paper" data-nav-ground="paper" aria-labelledby="projects-title">
+  <div class="mx-auto w-full max-w-360 px-5 py-20 md:px-10 md:py-28 xl:px-16">
+    <p class="label">Projects</p>
+    <h2 id="projects-title" class="serif mt-4 text-headline font-[480] tracking-tight">On the bench</h2>
+
+    <article aria-labelledby="project-sandpost" class="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 border-t border-rule pt-12 md:mt-16 md:grid-cols-12">
+      <header class="md:col-span-6">
+        <div class="flex flex-wrap items-center gap-2">
+          <Badge>Alpha</Badge>
+          <Badge variant="outline">Open source</Badge>
+        </div>
+        <h3 id="project-sandpost" class="serif mt-6 text-display leading-tight font-[480] tracking-[-0.035em]">
+          {sandpost.name}
+        </h3>
+        <p class="mt-5 max-w-[34ch] text-lede">{sandpost.tagline}</p>
+        <p class="mt-4 max-w-measure text-muted-foreground">{sandpost.summary}</p>
+
+        <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+          <a href={sandpost.repository} rel="noreferrer" class="group inline-flex items-center gap-1.5 font-medium">
+            Source on GitHub
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="h-[0.8em] w-[0.8em] text-signal transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.4"
+            >
+              <path d="M2 8h11M9 4l4 4-4 4" />
+            </svg>
+          </a>
+          <a href={sandpost.release.url} rel="noreferrer" class="group inline-flex items-center gap-1.5 font-medium">
+            Release notes
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="h-[0.8em] w-[0.8em] text-signal transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.4"
+            >
+              <path d="M2 8h11M9 4l4 4-4 4" />
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <dl class="self-start md:col-span-5 md:col-start-8">
+        <div class="flex items-baseline justify-between gap-6 border-b border-rule pb-4">
+          <dt class="label">Latest</dt>
+          <dd class="text-right">
+            <span class="mono text-caption">{sandpost.release.version}</span>
+            <span class="block text-caption text-muted-foreground">{sandpost.release.date}</span>
+          </dd>
+        </div>
+        {
+          sandpost.spec.map((row) => (
+            <div class="flex items-baseline justify-between gap-6 border-b border-rule py-4">
+              <dt class="label">{row.key}</dt>
+              <dd class="text-right">{row.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <ul class="grid grid-cols-1 gap-x-10 gap-y-10 md:col-span-12 md:mt-4 md:grid-cols-3" aria-label={`What ${sandpost.name} does`}>
+        {
+          sandpost.capabilities.map((capability, index) => (
+            <li class="border-t border-rule-strong pt-5">
+              <span class="mono text-caption text-signal">{String(index + 1).padStart(2, '0')}</span>
+              <h4 class="mt-2 text-title font-medium tracking-snug">{capability.title}</h4>
+              <p class="mt-2 text-muted-foreground">{capability.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+  </div>
+</section>

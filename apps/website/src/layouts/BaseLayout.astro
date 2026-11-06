@@ -1,0 +1,41 @@
+---
+import SiteNavigation from '../components/SiteNavigation.vue';
+import { primaryNav, site } from '../lib/site';
+import '../styles/app.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · Independent software laboratory`;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a0d11" />
+    <!-- The theme's faces: Newsreader for display, Instrument Sans for text, IBM Plex Mono for code. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400..600&family=IBM+Plex+Mono:wght@400&display=swap"
+    />
+    <!-- The navbar stays hidden until its script knows the scroll position; without scripts it never would. -->
+    <noscript><style>[data-site-nav] { opacity: 1 !important; }</style></noscript>
+  </head>
+  <body class="min-h-dvh">
+    <SiteNavigation items={primaryNav} currentPath={currentPath} client:load />
+    <main id="main">
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+---
+/*
+ * The How we work band, on the night ground: four principles drawn from the first site's About
+ * page and brought in line with the current homepage. The copy lives here, next to the markup.
+ */
+const principles = [
+  {
+    title: 'Independent by design',
+    description:
+      'We answer to the people who use our software. That lets us choose problems for their substance and give each one the time a good solution needs.',
+  },
+  {
+    title: 'Craft over volume',
+    description:
+      'A few tools that feel precise. We read the specifications, write the documentation alongside the code and test the awkward cases.',
+  },
+  {
+    title: 'Built to be maintained',
+    description:
+      'Software is not finished when it ships. We plan for upgrades and migrations, and keep architectures simple enough for one person to understand and run.',
+  },
+  {
+    title: 'Open when it helps',
+    description:
+      'When a tool we needed proves useful to others, we publish its source, under licenses that let you run it on your own machines.',
+  },
+];
+---
+
+<section id="how-we-work" aria-labelledby="how-we-work-title">
+  <div class="mx-auto w-full max-w-360 px-5 py-20 md:px-10 md:py-28 xl:px-16">
+    <p class="label">How we work</p>
+    <h2 id="how-we-work-title" class="serif mt-4 text-display leading-tight font-[480] tracking-[-0.035em]">
+      Made on purpose,
+      <span class="block font-normal italic md:pl-[0.9em]">and looked after.</span>
+    </h2>
+
+    <ol class="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:mt-20 md:grid-cols-2 xl:grid-cols-4">
+      {
+        principles.map((principle, index) => (
+          <li class="border-t border-rule pt-5">
+            <span class="mono text-caption text-signal">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2 text-title font-medium tracking-snug">{principle.title}</h3>
+            <p class="mt-2 text-muted-foreground">{principle.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

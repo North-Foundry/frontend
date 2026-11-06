@@ -28,6 +28,10 @@ yarn test        # test every workspace
 yarn storybook   # Storybook on http://localhost:6006
 ```
 
+Publish the website to [staging.northfoundry.eu](https://staging.northfoundry.eu) with
+`yarn workspace @north-foundry/website deploy:staging`, which builds it and uploads `apps/website/dist`
+with Wrangler (`apps/website/wrangler.jsonc`).
+
 Root commands delegate to Turborepo, which runs the matching script only in workspaces that define it.
 
 ## Adding a workspace

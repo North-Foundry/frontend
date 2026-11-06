@@ -1,0 +1,34 @@
+/*
+ * Site stylesheet: Tailwind, then the shared North Foundry theme.
+ *
+ * The theme has to come after `tailwindcss`, because its bridge uses `@theme inline`.
+ */
+@import 'tailwindcss';
+@import '@north-foundry/ui/styles.css';
+
+/* Class scanning for this app: layouts, pages and components. */
+@source '../';
+
+/*
+ * Anchor targets must clear the fixed header. A jump always lands with the page scrolled, where
+ * the bar is 4rem at every width, so the section starts exactly beneath it.
+ */
+[id] {
+  scroll-margin-top: 4rem;
+}
+
+/*
+ * Images are artwork, not content to carry away: they cannot be dragged or selected. WebKit and
+ * Blink read the property; Firefox needs `draggable="false"` on the element as well.
+ */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* In-page links glide to their section, unless the visitor prefers reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

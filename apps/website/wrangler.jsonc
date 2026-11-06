@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  // Staging serves the static Astro build as Worker assets until production gets its own config.
+  "name": "north-foundry-website-staging",
+  "compatibility_date": "2026-10-28",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "staging.northfoundry.eu", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false
+}
