@@ -1,3 +1,5 @@
+import type { DitherGradient } from './gradient';
+
 export type DitherEdge = 'top' | 'right' | 'bottom' | 'left';
 export type DitherUnderlayPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | DitherEdge;
 export type DitherUnderlayAnimation = 'none' | 'drift' | 'breathe' | 'expand' | 'contract' | 'ripple'
@@ -64,6 +66,15 @@ export interface DitherUnderlayOptions {
 }
 
 export type DitherUnderlayProps = DitherUnderlayOptions & {
+  /**
+   * Fill the host with a dithered gradient behind the texture. Without an explicit
+   * position the texture is left out and only the gradient is drawn.
+   */
+  gradient?: DitherGradient;
+  /**
+   * Gradient output levels per colour channel, from 2 to 64; fewer make the dither more visible.
+   */
+  gradientLevels?: number;
   /**
    * @deprecated Use position.
    */

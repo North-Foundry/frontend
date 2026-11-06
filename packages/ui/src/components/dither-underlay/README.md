@@ -1,7 +1,8 @@
 # Dither underlay
 
-A transparent decorative underlay based on the landing's single-ink, 8×8 Bayer texture.
-It sits above the host background and behind content placed after it.
+A decorative underlay based on the landing's single-ink, 8×8 Bayer texture, optionally over a
+dithered gradient ground. Without a gradient it is transparent and sits above the host
+background and behind content placed after it.
 
 ```vue
 <script setup lang="ts">
@@ -34,13 +35,32 @@ never captures input, and is hidden from assistive technology. It does not affec
 | `waveShape` | `sine` | `sine`, `triangle`, `sawtooth`, or `square` when animation is `wave` |
 | `waveCount` | `3` | Wave periods along the edge, clamped to 0.25–16 |
 | `amplitude` | `0.22` | Wave height as a fraction of depth, clamped to 0–0.45 |
-| `pixelSize` | `1` | Grain size in CSS pixels, clamped to 1–8 |
+| `pixelSize` | `2` | Grain size in CSS pixels, clamped to 1–8 |
 | `color` | `var(--signal, #5b8fd6)` | Canvas fill colour; CSS variables resolve against the host, with the fallback used when absent |
 | `intensity` | `0.9` | Ink coverage from 0 (transparent) to 1 |
 | `reactionThickness` | `1` | Reaction-diffusion shape thickness from `0` (thin) to `1` (full) |
 | `duration` | `12` | Seconds per loop for looping effects, minimum 0.5; controls speed for reaction-diffusion and Kuramoto |
 | `timescale` | `1` | Playback speed: `1.5` runs half again as fast, `0` freezes and negative values run backwards; clamped to −10–10. Reaction-diffusion uses only its magnitude |
 | `paused` | `false` | Freeze the current animation frame |
+| `gradient` | none | Gradient ground behind the texture: `graphite`, `slate`, `signal`, `horizon`, `aurora`, `eclipse`, `steel`, `polar`, or `paper` |
+| `gradientLevels` | `16` | Gradient output levels per colour channel, clamped to 2–64; fewer make the dither more visible |
+
+## Gradient grounds
+
+`gradient` fills the host with a fixed, opaque gradient that looks the same on either colour
+scheme. An SVG filter quantises it with the same 8×8 Bayer table as the texture, at `pixelSize`
+cells, so the ground and the texture share one grain. The gradient stays static and needs no
+canvas. Each colour channel steps independently, so blue grounds show a faint tint in the
+pattern up close.
+
+```vue
+<DitherUnderlay gradient="aurora" />
+<DitherUnderlay gradient="horizon" position="top" animation="wave" />
+```
+
+Without an explicit `position` (or the deprecated `corner`), only the gradient is drawn and no
+canvas is mounted. With one, the texture renders over the gradient as usual. The gradient
+colours live in `DitherUnderlay.vue`; `gradient.ts` holds the names and filter parameters.
 
 `expand` starts small, grows, and returns; `contract` starts large, shrinks, and returns.
 Looping animations repeat smoothly and preserve the Bayer grid rather than stretching its pixels.
@@ -96,7 +116,8 @@ Run `yarn storybook` and open **Effects / Dither underlay**, or run
 
 The Vue component, browser lifecycle and drawing modules follow the same separation as North Arrow.
 
-- `DitherUnderlay.vue` — reactive props, decorative markup and Vue lifecycle.
+- `DitherUnderlay.vue` — reactive props, decorative markup, gradient colours and Vue lifecycle.
+- `gradient.ts` — gradient names and the ordered-dither SVG filter parameters.
 - `types.ts` — placement, motion and option contracts.
 - `layout.ts` — shared defaults, corner proportions and full-side placement.
 - `mount.ts` — canvas sizing, colour, animation, visibility, resize and cleanup.

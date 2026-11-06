@@ -1,8 +1,9 @@
 /**
- * Decorative corner and side textures, with Vue and framework-free entry points.
+ * Decorative corner and side textures and dithered gradient grounds, with Vue and framework-free entry points.
  */
 export { default as DitherUnderlay } from './DitherUnderlay.vue';
 export { DITHER_UNDERLAY_DEFAULTS, mountDitherUnderlay, type DitherUnderlayHandle } from './mount';
+export { DITHER_GRADIENT_LEVELS, type DitherGradient } from './gradient';
 export type {
   DitherUnderlayOptions,
   DitherUnderlayProps,

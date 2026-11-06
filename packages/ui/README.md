@@ -52,7 +52,7 @@ import { DitherUnderlay } from '@north-foundry/ui/dither-underlay';
 
 <template>
   <section style="position: relative">
-    <DitherUnderlay position="bottom" animation="wave" :depth="180" :pixel-size="2" />
+    <DitherUnderlay position="bottom" animation="wave" :depth="180" />
     <div style="position: relative">Your content</div>
   </section>
 </template>
@@ -62,6 +62,15 @@ The framework-free `mountDitherUnderlay(host, canvas, options)` returns `update`
 methods. `DitherCorner`, its types and the `corner` prop remain compatibility aliases.
 Import from `@north-foundry/ui/dither-underlay` and prefer `DitherUnderlay` and `position` in new code;
 `position` takes precedence when both props are supplied.
+
+Set `gradient` to fill the parent with a dithered gradient ground: `graphite`, `slate`,
+`signal`, `horizon`, `aurora`, `eclipse`, `steel`, `polar` or `paper`. Without a `position`,
+only the gradient is drawn; with one, the texture runs over it.
+
+```vue
+<DitherUnderlay gradient="aurora" />
+<DitherUnderlay gradient="horizon" position="top" animation="wave" />
+```
 
 Each animation has a separate implementation of a small rendering interface. Shared numerical
 helpers live in `src/lib/dither.ts` and `src/lib/math.ts`; overlay geometry stays with the component.
