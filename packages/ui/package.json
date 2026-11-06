@@ -39,6 +39,10 @@
       "types": "./src/components/label/index.ts",
       "default": "./src/components/label/index.ts"
     },
+    "./alert-dialog": {
+      "types": "./src/components/alert-dialog/index.ts",
+      "default": "./src/components/alert-dialog/index.ts"
+    },
     "./styles.css": "./src/styles/index.css",
     "./tokens.css": "./src/styles/tokens.css",
     "./package.json": "./package.json"

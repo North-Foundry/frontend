@@ -94,6 +94,9 @@
   --annotation: var(--nf-pencil);
   --float-shadow: var(--nf-shadow-float-dark);
 
+  /* Dims the page behind a modal dialog; deep enough that the raised panel reads on its own. */
+  --scrim: color-mix(in oklab, var(--nf-graphite-950) 80%, transparent);
+
   /*
    * Tones: two ordered ramps for generative artwork such as North Arrow, from 1, nearest
    * the ground, to 5, in strongest contrast with it. "More signal" always means "more contrast",
@@ -168,6 +171,9 @@
 
   --annotation: var(--nf-blue-750);
   --float-shadow: var(--nf-shadow-float-light);
+
+  /* Dimming with ink rather than a lighter wash keeps the paper panel the brightest surface. */
+  --scrim: color-mix(in oklab, var(--nf-graphite-950) 45%, transparent);
 
   /* Tones. */
   --tone-ink-1: var(--nf-graphite-200);

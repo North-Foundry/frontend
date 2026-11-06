@@ -70,6 +70,7 @@
   --color-selection-foreground: var(--selection-foreground);
   
   --color-annotation: var(--annotation);
+  --color-scrim: var(--scrim);
   
   --color-code: var(--code-background);
   --color-code-foreground: var(--code-foreground);

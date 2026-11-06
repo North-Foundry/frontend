@@ -156,6 +156,51 @@ controls. Rounding follows the existing theme tokens; use `class="rounded-none"`
 `class="rounded-md"` or `class="rounded-full"` for a local override. Prefer pill shapes for
 counters.
 
+`AlertDialog` is the shadcn-vue confirmation modal: it only closes through its cancel or action
+button, or Escape, and focuses the cancel button when it opens. Import it from
+`@north-foundry/ui` or `@north-foundry/ui/alert-dialog`.
+
+```vue
+<script setup lang="ts">
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Button,
+} from '@north-foundry/ui';
+</script>
+
+<template>
+  <AlertDialog>
+    <AlertDialogTrigger as-child>
+      <Button variant="destructive">Delete</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Delete this project?</AlertDialogTitle>
+        <AlertDialogDescription>This cannot be undone.</AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Keep it</AlertDialogCancel>
+        <AlertDialogAction variant="destructive">Delete project</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</template>
+```
+
+It departs from the registry in a few places: `AlertDialogAction` and `AlertDialogCancel` take the
+button's `variant` and `size` (cancel defaults to `outline`); the panel is a raised layer with
+`bg-popover`, `shadow-float` and the 4px `rounded-md`; and the backdrop uses the theme's `--scrim`
+(`bg-scrim`) instead of a fixed black. The dialog takes the scheme of its trigger's band. When it
+is opened through `v-model:open` without a trigger, it takes the scheme of the page instead.
+
 The dark scheme is the identity: a graphite ground with one cool accent. Add the `paper` class to
 any element to switch it and everything inside it to the light scheme, and `dark` to switch back.
 The font families point at Instrument Sans, IBM Plex Mono and Architects Daughter, but the font files are
