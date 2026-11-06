@@ -14,7 +14,7 @@ import { NorthArrow } from '@north-foundry/ui';
  * follows the `ground` control the way the product would.
  */
 const meta = {
-  title: 'Brand/North arrow',
+  title: 'Brand/North Arrow',
   component: NorthArrow,
   args: {
     size: 256,

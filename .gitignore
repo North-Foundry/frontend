@@ -12,6 +12,7 @@ node_modules/
 dist/
 build/
 out/
+storybook-static/
 .next/
 .turbo/
 coverage/
@@ -41,3 +42,4 @@ yarn-error.log*
 # misc
 *.pem
 .cache/
+.wrangler/

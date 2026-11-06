@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@import '@north-foundry/ui/styles.css';
+@import '../stories/effects/dither-underlay/dither-gradient-gallery.css';
+
+/* The preview stylesheet lives in .storybook, so the stories have to be declared as sources. */
+@source '../stories';

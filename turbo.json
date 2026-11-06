@@ -12,7 +12,8 @@
         ".next/**",
         "!.next/cache/**",
         "build/**",
-        "out/**"
+        "out/**",
+        "storybook-static/**"
       ]
     },
     "dev": {

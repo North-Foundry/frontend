@@ -1,0 +1,29 @@
+{
+  "name": "@north-foundry/storybook",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "deploy": "storybook build && wrangler deploy",
+    "check-types": "vue-tsc --noEmit",
+    "test": "node tests/dither-underlay.test.ts && node tests/dither-underlay-mount.test.ts && node tests/select-scroll.test.ts"
+  },
+  "dependencies": {
+    "@north-foundry/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@storybook/vue3-vite": "10.6.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "storybook": "10.6.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.5",
+    "vue": "^3.5.44",
+    "vue-tsc": "^3.3.13",
+    "wrangler": "4.152.0"
+  }
+}

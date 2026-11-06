@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "north-foundry-storybook",
+  "compatibility_date": "2026-10-28",
+  "assets": {
+    "directory": "./storybook-static",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "storybook.northfoundry.eu", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false
+}

@@ -51,7 +51,7 @@ Inside `effects/`, each effect has its own file. Shared pieces stay grouped by r
 | Change props, accessibility or DOM | `NorthArrow.vue` |
 | Change the rendered tones | The `--tone-*` tokens in `src/styles/themes/north-foundry.css`; keep the fallback `TONES` in `engine/surface.ts` in step |
 | Change the shared blue palette | `vendor/palette.ts` (shared with the plate pipeline) |
-| Add a story | `apps/storybook/stories/north-arrow.stories.ts` |
+| Add a story | `apps/storybook/stories/brand/north-arrow/north-arrow.stories.ts` |
 
 ## Why there is more code than one mark needs
 

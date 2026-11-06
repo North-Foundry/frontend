@@ -25,6 +25,7 @@ yarn build       # build apps and packages in dependency order
 yarn lint        # lint every workspace
 yarn check-types # type check every workspace
 yarn test        # test every workspace
+yarn storybook   # Storybook on http://localhost:6006
 ```
 
 Root commands delegate to Turborepo, which runs the matching script only in workspaces that define it.
@@ -36,7 +37,7 @@ Create a folder in `apps/` or `packages/` with its own `package.json` and add th
 
 ## Repository conventions
 
-`packages/ui` holds the shared UI (`@north-foundry/ui`).
+`packages/ui` holds the shared UI (`@north-foundry/ui`) and `apps/storybook` is its workshop.
 
 Agent-facing rules live in `AGENTS.md` and under `.agents/docs/`. Commit messages follow
 Conventional Commits and are validated by `.githooks/commit-msg`; enable the hook once per clone with
