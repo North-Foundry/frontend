@@ -43,3 +43,6 @@ yarn-error.log*
 *.pem
 .cache/
 .wrangler/
+
+# astro
+.astro/
