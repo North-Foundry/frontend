@@ -117,7 +117,8 @@ export interface NorthArrowOptions {
  */
 export interface NorthArrowHandle {
   /**
-   * Merges new options and repaints from scratch.
+   * Merges new options and repaints. A change of `ground` or `mono` only swaps the colours and
+   * keeps a running animation where it is; any other change rebuilds the mount from scratch.
    *
    * @param options - Options to override; anything omitted keeps its current value.
    */
@@ -201,6 +202,7 @@ export function mountNorthArrow(
   initial: NorthArrowOptions = {},
 ): NorthArrowHandle {
   let options = resolveOptions(initial);
+  let surface: Surface | null = null;
   let effect: Effect | null = null;
   let animation = 0;
 
@@ -250,6 +252,17 @@ export function mountNorthArrow(
   };
 
   /**
+   * Swaps the palette on the live surface. The surface looks colours up as it plots, so a running
+   * animation picks them up on its next frame without restarting; a still is repainted at once.
+   */
+  const recolour = (): void => {
+    surface?.setPalette(options.ground, options.mono, readThemeTones(canvas, options.ground));
+    if (!animation) {
+      paintStill();
+    }
+  };
+
+  /**
    * Rebuilds the surface, mask and effect for the current options, then paints once.
    */
   const mount = (): void => {
@@ -258,7 +271,7 @@ export function mountNorthArrow(
     const grid = gridSide(options.size, options.cell);
     sizeCanvas(grid);
 
-    const surface = new Surface(canvas, grid, grid);
+    surface = new Surface(canvas, grid, grid);
     surface.setPalette(options.ground, options.mono, readThemeTones(canvas, options.ground));
     effect = ascent.create(surface, rasterize(northArrow, grid, grid, Math.round(grid * PAD)));
 
@@ -274,8 +287,21 @@ export function mountNorthArrow(
 
   return {
     update(next = {}) {
+      const previous = options;
       options = mergeOptions(options, next);
-      mount();
+      /**
+       * Ground and mono only change colours, so they keep the running animation; anything that
+       * changes the grid or the motion rebuilds the mount.
+       */
+      const rebuild =
+        options.size !== previous.size ||
+        options.cell !== previous.cell ||
+        options.animated !== previous.animated;
+      if (rebuild) {
+        mount();
+      } else {
+        recolour();
+      }
     },
     destroy() {
       stopAnimation();
