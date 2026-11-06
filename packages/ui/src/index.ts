@@ -18,3 +18,4 @@ export { type Scheme, useScheme } from './lib/scheme';
 export * from './components/dither-underlay';
 export * from './components/button';
 export * from './components/select';
+export * from './components/input';
