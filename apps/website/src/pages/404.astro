@@ -1,0 +1,52 @@
+---
+/*
+ * The page served for any address the site does not have. Wrangler returns it with a 404 status
+ * (`not_found_handling` in wrangler.jsonc). It keeps the header of the support and privacy pages,
+ * offers the two ways on, and closes on the Turin skyline.
+ */
+import SiteSkyline from '../components/SiteSkyline.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const ways = [
+  { label: 'Back to the homepage', href: '/' },
+  { label: 'Get support', href: '/support/' },
+];
+---
+
+<BaseLayout title="Page not found" description="This page does not exist on the North Foundry site.">
+  <article aria-labelledby="not-found-title">
+    <div class="mx-auto w-full max-w-360 px-5 pt-16 pb-20 md:px-10 md:pt-24 md:pb-28 xl:px-16">
+      <header>
+        <p class="label">Error 404</p>
+        <h1 id="not-found-title" class="serif mt-4 max-w-[16ch] text-display leading-tight font-[480] tracking-[-0.035em]">
+          This page is not here.
+        </h1>
+        <p class="mt-6 max-w-[40ch] text-lede text-muted-foreground">
+          The link may be old, or the address mistyped.
+        </p>
+      </header>
+
+      <nav aria-label="Ways on" class="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+        {
+          ways.map((way) => (
+            <a href={way.href} class="group inline-flex items-center gap-1.5 font-medium">
+              {way.label}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                class="size-[0.8em] text-signal transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+              >
+                <path d="M2 8h11M9 4l4 4-4 4" />
+              </svg>
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </article>
+
+  <SiteSkyline />
+</BaseLayout>
