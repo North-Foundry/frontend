@@ -88,8 +88,9 @@
   --link: var(--nf-graphite-50);
   --link-decoration: color-mix(in oklab, var(--nf-blue-350) 70%, transparent);
 
-  --selection: var(--nf-navy-700);
-  --selection-foreground: var(--nf-graphite-25);
+  /* Pale selection with dark ink remains distinct from dark fields, including on hover. */
+  --selection: var(--nf-blue-350);
+  --selection-foreground: var(--nf-graphite-950);
 
   --annotation: var(--nf-pencil);
   --float-shadow: var(--nf-shadow-float-dark);
